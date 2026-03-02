@@ -14,6 +14,9 @@
     // config をHTML内で固定して手動初期化します。
     window.CMS_MANUAL_INIT = true;
     window.__SUTTE_CMS_CONFIG__ = {
+      // 手動configを渡していても、Decap CMSはデフォルトで admin/config.yml をfetchして
+      // マージします。二重読み込みによる collections 重複を避けるため無効化します。
+      load_config_file: false,
       backend: {
         name: 'github',
         repo: 'takamitsu-iida/sutte',

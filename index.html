@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon -->
+  <!-- <link rel="icon" type="image/svg+xml" href="./static/site/img/favicon.svg"> -->
+
+  <title>スッテ一覧</title>
+
+  <!-- App CSS (scoped UI styles) -->
+  <link rel="stylesheet" href="./static/site/css/style.css?v=202602191512" />
+
+</head>
+
+<body>
+
+  <script type="module">
+    import { Main } from './static/site/js/index.js';
+
+    const params = {
+    };
+
+    // ページ読み込み時に実行
+    window.addEventListener('load', async () => {
+      const app = new Main(params);
+      try {
+        await app.initialize();
+      } catch (error) {
+        console.error('初期化中にエラーが発生しました:', error);
+      }
+    });
+  </script>
+
+</body>
+
+</html>

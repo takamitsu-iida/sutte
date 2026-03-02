@@ -2,6 +2,11 @@
 
 マルイカ釣りに使うスッテの情報を、GitHubで管理しつつGitHub Pagesで閲覧するための静的サイトです。
 
+<br>
+https://takamitsu-iida.github.io/sutte/
+<br>
+
+
 ## データの管理
 
 - 一覧データ: `static/data/sutte.json`

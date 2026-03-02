@@ -21,7 +21,8 @@
         name: 'github',
         repo: 'takamitsu-iida/sutte',
         branch: 'main',
-        base_url: 'https://sutte.takamitsu-iida.workers.dev',
+        // OAuthプロバイダ(Cloudflare Worker)のURL
+        base_url: 'https://sutte-decap-oauth.takamitsu-iida.workers.dev',
         auth_endpoint: 'auth',
       },
       publish_mode: 'editorial_workflow',

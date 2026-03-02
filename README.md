@@ -39,5 +39,11 @@ GitHub Pages上の `./admin/` は Decap CMS の管理画面です。
 3) 管理画面設定を更新
 - `admin/config.yml` の `backend.base_url` を Worker の URL に置き換えます
 	- 例: `https://sutte-decap-oauth.<your-subdomain>.workers.dev`
+	- このリポジトリの既定は `https://sutte-decap-oauth.takamitsu-iida.workers.dev` です（デプロイ後に有効）
+
+#### トラブルシュート
+
+- `.../auth?...` が `404` の場合: そのURLにOAuthプロバイダがデプロイされていません（別のWorker/サイト配信が動いている可能性があります）。
+- 期待される挙動: `https://<worker>/` は `{"ok": true, ...}` のJSON、`https://<worker>/auth?...` は GitHub の認可画面へ `302` リダイレクトします。
 
 これで `https://<GitHub Pages>/admin/` からログインし、データ編集＋画像アップロード→GitHubへ保存ができるようになります。

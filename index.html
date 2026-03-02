@@ -7,33 +7,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Favicon -->
-  <!-- <link rel="icon" type="image/svg+xml" href="./static/site/img/favicon.svg"> -->
+  <!-- <link rel="icon" type="image/svg+xml" href="./static/img/favicon.svg"> -->
 
-  <title>スッテ一覧</title>
+  <title>スッテ図鑑</title>
 
-  <!-- App CSS (scoped UI styles) -->
-  <link rel="stylesheet" href="./static/site/css/style.css?v=202602191512" />
+  <link rel="stylesheet" href="./static/css/style.css" />
 
 </head>
 
 <body>
 
-  <script type="module">
-    import { Main } from './static/site/js/index.js';
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">スッテ図鑑（所持一覧）</h1>
+      <p class="site-subtitle">実物と見比べるためのカタログ。データはGitHubで管理します。</p>
+    </div>
+  </header>
 
-    const params = {
-    };
+  <main class="container">
+    <section class="panel" aria-labelledby="summary-title">
+      <h2 id="summary-title" class="panel-title">概要</h2>
+      <dl class="summary">
+        <div class="summary-row">
+          <dt>件数</dt>
+          <dd><span id="sutte-count">-</span></dd>
+        </div>
+        <div class="summary-row">
+          <dt>データ</dt>
+          <dd><a id="data-link" href="./static/data/sutte.json">static/data/sutte.json</a></dd>
+        </div>
+      </dl>
+      <div class="actions">
+        <a id="github-edit-link" class="button" href="#" rel="noopener" target="_blank">GitHubでデータを編集</a>
+      </div>
+      <p id="github-edit-hint" class="hint" hidden>
+        GitHub編集リンクが未設定です。GitHub上でこのリポジトリのURLを設定してください。
+      </p>
+    </section>
 
-    // ページ読み込み時に実行
-    window.addEventListener('load', async () => {
-      const app = new Main(params);
-      try {
-        await app.initialize();
-      } catch (error) {
-        console.error('初期化中にエラーが発生しました:', error);
-      }
-    });
-  </script>
+    <section class="panel" aria-labelledby="list-title">
+      <div class="panel-header">
+        <h2 id="list-title" class="panel-title">所持スッテ一覧</h2>
+      </div>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <div id="sutte-list" class="grid" aria-label="スッテ一覧"></div>
+    </section>
+  </main>
+
+  <script type="module" src="./static/js/index.js"></script>
 
 </body>
 

@@ -2,7 +2,7 @@ const DATA_PATH = './static/data/sutte.json';
 
 // GitHub Pages上で「データ編集」導線を出すための設定。
 // 例: "iida/sutte" のように "owner/repo" を入れてください。
-const GITHUB_REPO = '';
+const GITHUB_REPO = 'takamitsu-iida/sutte';
 const GITHUB_BRANCH = 'main';
 const GITHUB_DATA_FILE = 'static/data/sutte.json';
 

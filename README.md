@@ -22,28 +22,55 @@ GitHub Pages上の `./admin/` は Decap CMS の管理画面です。
 
 ただし、GitHub OAuth は「client secret」を安全に保持するサーバが必要なため、OAuthプロバイダを別途デプロイします。
 
+<br>
+
 ### 手順（Cloudflare Worker想定）
 
-1) GitHubで OAuth App を作成
-- Homepage URL: GitHub PagesのURL
-- Authorization callback URL: `https://<あなたのWorkerドメイン>/callback`
+Cloudflare (githubアカウントでログイン)
 
-2) OAuthプロバイダをデプロイ
-- このリポジトリの `oauth-provider/` を Cloudflare Workers にデプロイします
-- `wrangler.toml` を使う場合の例:
-	- `cd oauth-provider`
-	- `wrangler deploy`
-	- `wrangler secret put GITHUB_CLIENT_ID`
-	- `wrangler secret put GITHUB_CLIENT_SECRET`
+- https://www.cloudflare.com/ja-jp/developer-platform/products/workers/
 
-3) 管理画面設定を更新
-- `admin/config.yml` の `backend.base_url` を Worker の URL に置き換えます
-	- 例: `https://sutte-decap-oauth.<your-subdomain>.workers.dev`
-	- このリポジトリの既定は `https://sutte-decap-oauth.takamitsu-iida.workers.dev` です（デプロイ後に有効）
+
+1. Cloudflare ダッシュボード
+2. Workers & Pages
+3. Create application
+4. Create Worker
+5. Start with Hello World!
+6. Worker 名を sutte-oauth にする
+
+作成したらEdit codeを開き、中身をworker.jsの内容で丸ごと置き換え
+
+Settingsの「Variables and Secrets」を追加
+
+- 変数名 GITHUB_CLIENT_ID
+- 変数名 GITHUB_CLIENT_SECRET
+
+値はそれぞれGithubのページからコピーする
+
+<br><br>
+
+GitHubで (githubアカウントでログイン)
+
+Settings　（レポジトリではなくアカウントのSettings）
+
+Developer settings　（左の一番下）
+
+OAuth Apps　（左側メニュー）
+
+- Homepage URL: `https://takamitsu-iida.github.io/sutte/`
+
+- Authorization callback URL: `https://sutte-oauth.takamitsu-iida.workers.dev/callback`
+
 
 #### トラブルシュート
 
 - `.../auth?...` が `404` の場合: そのURLにOAuthプロバイダがデプロイされていません（別のWorker/サイト配信が動いている可能性があります）。
 - 期待される挙動: `https://<worker>/` は `{"ok": true, ...}` のJSON、`https://<worker>/auth?...` は GitHub の認可画面へ `302` リダイレクトします。
+
+よくある原因:
+
+- Worker 名（`wrangler.toml` の `name`）が、別用途の Worker/配信と衝突している
+	- この場合、`https://<name>.<account>.workers.dev/` にアクセスすると JSON ではなく HTML が返ってきます（＝OAuth Worker ではない）
+	- 対策: OAuth 用 Worker を別名（例: `sutte-oauth`）でデプロイし、Decap CMS の `base_url` をそのURLへ変更します
 
 これで `https://<GitHub Pages>/admin/` からログインし、データ編集＋画像アップロード→GitHubへ保存ができるようになります。

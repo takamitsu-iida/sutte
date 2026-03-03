@@ -4,7 +4,7 @@ backend:
   branch: main
   # GitHub Pages(静的)では OAuth の「code→token交換」をサーバ側で行う必要があります。
   # 下記をデプロイしたOAuthプロバイダ（例: Cloudflare Worker）のURLに置き換えてください。
-  base_url: sutte.takamitsu-iida.workers.dev
+  base_url: https://sutte-oauth.takamitsu-iida.workers.dev
   auth_endpoint: auth
 
 publish_mode: editorial_workflow

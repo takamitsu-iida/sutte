@@ -52,7 +52,12 @@ function renderCard(item) {
   const productName = item.productName ?? '';
   const displayName = [manufacturer, productName].filter(Boolean).join(' / ') || (item.id ?? '（名称未設定）');
 
-  const image = item.image ?? '';
+  let image = item.image ?? '';
+  // GitHub Pages のプロジェクトページでは "/static/..." がドメイン直下を指して壊れるため、
+  // 既存データ互換として "./static/..." に寄せます。
+  if (typeof image === 'string' && image.startsWith('/static/')) {
+    image = `.${image}`;
+  }
   const thumbHtml = image
     ? `<img class="thumb" src="${escapeHtml(image)}" alt="${escapeHtml(displayName)}" loading="lazy" />`
     : `<div class="thumb" role="img" aria-label="画像なし"></div>`;

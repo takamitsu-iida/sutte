@@ -10,7 +10,7 @@ https://takamitsu-iida.github.io/sutte/
 ## データの管理
 
 - 一覧データ: `static/data/sutte.json`
-- 画像: `static/img/` に保存し、JSONの `image` に `./static/img/xxx.jpg` のように書きます
+- 画像: `static/img/uploads/` に保存し、JSON の `image` には `static/img/uploads/xxx.jpg` のように入ります（Decap CMS でアップロードすると自動で設定されます）
 
 GitHub Pagesは静的ホスティングのため、ページ上から直接GitHubへ保存はできません（認証・API連携が必要です）。
 編集はGitHub上で `static/data/sutte.json` を更新してコミット（またはPR）してください。
@@ -19,6 +19,15 @@ GitHub Pagesは静的ホスティングのため、ページ上から直接GitHu
 
 GitHub Pages上の `./admin/` は Decap CMS の管理画面です。
 ここから `static/data/sutte.json` の編集と、画像のアップロード（`static/img/uploads` へ保存）を行い、GitHubへコミットできます。
+
+### 管理画面の使い方（編集・画像アップロード）
+
+1. `https://takamitsu-iida.github.io/sutte/admin/` を開く
+2. **Login with GitHub** でログイン
+3. 左メニューの **スッテ** → **一覧** を開く
+4. `items` の **Add** でスッテを追加、または既存行を開いて編集
+5. **画像** フィールドで画像を選ぶ（アップロードされ `static/img/uploads/` に保存されます）
+6. 右上の **Save** → **Publish**
 
 ただし、GitHub OAuth は「client secret」を安全に保持するサーバが必要なため、OAuthプロバイダを別途デプロイします。
 
@@ -60,17 +69,3 @@ OAuth Apps　（左側メニュー）
 - Homepage URL: `https://takamitsu-iida.github.io/sutte/`
 
 - Authorization callback URL: `https://sutte-oauth.takamitsu-iida.workers.dev/callback`
-
-
-#### トラブルシュート
-
-- `.../auth?...` が `404` の場合: そのURLにOAuthプロバイダがデプロイされていません（別のWorker/サイト配信が動いている可能性があります）。
-- 期待される挙動: `https://<worker>/` は `{"ok": true, ...}` のJSON、`https://<worker>/auth?...` は GitHub の認可画面へ `302` リダイレクトします。
-
-よくある原因:
-
-- Worker 名（`wrangler.toml` の `name`）が、別用途の Worker/配信と衝突している
-	- この場合、`https://<name>.<account>.workers.dev/` にアクセスすると JSON ではなく HTML が返ってきます（＝OAuth Worker ではない）
-	- 対策: OAuth 用 Worker を別名（例: `sutte-oauth`）でデプロイし、Decap CMS の `base_url` をそのURLへ変更します
-
-これで `https://<GitHub Pages>/admin/` からログインし、データ編集＋画像アップロード→GitHubへ保存ができるようになります。

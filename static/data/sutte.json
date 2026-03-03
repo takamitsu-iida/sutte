@@ -1,18 +1,6 @@
 {
   "items": [
     {
-      "size": "（例）3.0号",
-      "color": "（例）赤白",
-      "go": "3.0",
-      "manufacturer": "（例）メーカー名",
-      "note": "（任意）購入時期、使い分け、特徴など",
-      "series": "（任意）シリーズ名",
-      "weight": "（例）15g",
-      "productName": "（例）商品名",
-      "id": "sample-001",
-      "image": ""
-    },
-    {
       "id": "sample-2",
       "manufacturer": "ダイワ",
       "productName": "MD35Sリフレクト",

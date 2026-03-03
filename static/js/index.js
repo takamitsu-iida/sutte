@@ -59,7 +59,9 @@ function renderCard(item) {
     image = `.${image}`;
   }
   const thumbHtml = image
-    ? `<img class="thumb" src="${escapeHtml(image)}" alt="${escapeHtml(displayName)}" loading="lazy" />`
+    ? `<a class="thumb-link" href="${escapeHtml(image)}" target="_blank" rel="noopener">
+        <img class="thumb" src="${escapeHtml(image)}" alt="${escapeHtml(displayName)}" loading="lazy" />
+      </a>`
     : `<div class="thumb" role="img" aria-label="画像なし"></div>`;
 
   const tags = [

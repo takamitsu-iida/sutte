@@ -135,6 +135,10 @@ a {
   grid-template-rows: 140px 1fr;
 }
 
+.thumb-link {
+  display: block;
+}
+
 .thumb {
   width: 100%;
   height: 140px;

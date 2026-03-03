@@ -1,16 +1,23 @@
 {
   "items": [
     {
-      "id": "sample-001",
-      "manufacturer": "（例）メーカー名",
-      "productName": "（例）商品名",
-      "series": "（任意）シリーズ名",
       "size": "（例）3.0号",
-      "go": "3.0",
-      "weight": "（例）15g",
       "color": "（例）赤白",
-      "image": "",
-      "note": "（任意）購入時期、使い分け、特徴など"
+      "go": "3.0",
+      "manufacturer": "（例）メーカー名",
+      "note": "（任意）購入時期、使い分け、特徴など",
+      "series": "（任意）シリーズ名",
+      "weight": "（例）15g",
+      "productName": "（例）商品名",
+      "id": "sample-001",
+      "image": ""
+    },
+    {
+      "id": "sample-2",
+      "manufacturer": "ダイワ",
+      "productName": "MD35Sリフレクト",
+      "size": "35",
+      "image": "static/img/uploads/iphone-chrome.jpg"
     }
   ]
 }

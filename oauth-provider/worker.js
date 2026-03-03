@@ -16,7 +16,7 @@ function html(body, extraHeaders) {
   return new Response(body, { headers });
 }
 
-function callbackPage({ script, title = 'OAuth', message = 'Processing…' }) {
+function callbackPage({ script, title = 'OAuth', message = 'Processing…', details = '' }) {
   return `<!doctype html>
 <html lang="en">
   <head>
@@ -26,7 +26,72 @@ function callbackPage({ script, title = 'OAuth', message = 'Processing…' }) {
   </head>
   <body>
     <p>${message}</p>
+    ${details ? `<pre style="white-space:pre-wrap;word-break:break-word;">${details}</pre>` : ''}
     <script>${script}</script>
+  </body>
+</html>`;
+}
+
+function postToOpenerAndMaybeClose(message) {
+  return `(function(){
+    try {
+      if (window.opener && window.opener.postMessage) {
+        window.opener.postMessage(${JSON.stringify(message)}, '*');
+        setTimeout(function(){ window.close(); }, 50);
+        return;
+      }
+    } catch (e) {}
+    // No opener: keep window open so the user can read the error.
+  })();`;
+}
+
+function authHandshakePage({ provider, authorizeUrl }) {
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OAuth</title>
+  </head>
+  <body>
+    <p>Redirecting to provider…</p>
+    <script>
+      (function () {
+        var provider = ${JSON.stringify(provider)};
+        var authorizeUrl = ${JSON.stringify(authorizeUrl)};
+        var started = false;
+
+        function start() {
+          if (started) return;
+          started = true;
+          window.location.assign(authorizeUrl);
+        }
+
+        // Handshake with Decap CMS popup flow.
+        window.addEventListener(
+          'message',
+          function (e) {
+            if (e && e.data === 'authorizing:' + provider) {
+              start();
+            }
+          },
+          false
+        );
+
+        try {
+          if (window.opener && window.opener.postMessage) {
+            window.opener.postMessage('authorizing:' + provider, '*');
+          } else {
+            start();
+          }
+        } catch (e) {
+          start();
+        }
+
+        // Fallback: proceed even if opener messages are blocked.
+        setTimeout(start, 800);
+      })();
+    </script>
   </body>
 </html>`;
 }
@@ -108,6 +173,9 @@ export default {
       if (!env.GITHUB_CLIENT_ID) return json({ error: 'Missing GITHUB_CLIENT_ID' }, 500);
       if (!env.GITHUB_CLIENT_SECRET) return json({ error: 'Missing GITHUB_CLIENT_SECRET' }, 500);
 
+      const provider = url.searchParams.get('provider') || 'github';
+      if (provider !== 'github') return json({ error: 'Unsupported provider' }, 400);
+
       const state = randomState();
       const scope = url.searchParams.get('scope') || env.DEFAULT_SCOPE || 'public_repo';
 
@@ -120,9 +188,12 @@ export default {
       authorize.searchParams.set('scope', scope);
       authorize.searchParams.set('state', state);
 
-      const headers = new Headers({ location: authorize.toString() });
+      const headers = new Headers();
       setCookie(headers, 'decap_oauth_state', state);
-      return new Response(null, { status: 302, headers });
+      return html(
+        authHandshakePage({ provider, authorizeUrl: authorize.toString() }),
+        headers
+      );
     }
 
     if (pathname === '/callback') {
@@ -131,28 +202,38 @@ export default {
 
       const code = url.searchParams.get('code');
       const state = url.searchParams.get('state');
+      const oauthError = url.searchParams.get('error');
+      const oauthErrorDescription = url.searchParams.get('error_description');
       const expected = getCookie(request, 'decap_oauth_state');
 
       const headers = new Headers();
       clearCookie(headers, 'decap_oauth_state');
 
       if (!code) {
+        const msg = oauthErrorDescription
+          ? `${oauthError || 'oauth_error'}: ${oauthErrorDescription}`
+          : oauthError || 'Missing code';
+        const providerMsg = providerMessageError(msg);
         return html(
           callbackPage({
             title: 'OAuth error',
-            message: 'Missing code.',
-            script: `window.opener&&window.opener.postMessage('${providerMessageError('Missing code')}', '*');window.close();`,
+            message: 'OAuth failed (no code returned).',
+            details: msg,
+            script: postToOpenerAndMaybeClose(providerMsg),
           }),
           headers
         );
       }
 
       if (!state || !expected || state !== expected) {
+        const msg = 'Invalid state (CSRF check failed). Please retry.';
+        const providerMsg = providerMessageError(msg);
         return html(
           callbackPage({
             title: 'OAuth error',
             message: 'Invalid state.',
-            script: `window.opener&&window.opener.postMessage('${providerMessageError('Invalid state')}', '*');window.close();`,
+            details: msg,
+            script: postToOpenerAndMaybeClose(providerMsg),
           }),
           headers
         );
@@ -175,28 +256,25 @@ export default {
       const tokenJson = await tokenRes.json().catch(() => ({}));
       if (!tokenRes.ok || !tokenJson.access_token) {
         const msg = tokenJson.error_description || tokenJson.error || 'Token exchange failed';
+        const providerMsg = providerMessageError(msg);
         return html(
           callbackPage({
             title: 'OAuth error',
             message: 'Token exchange failed.',
-            script: `window.opener&&window.opener.postMessage('${providerMessageError(msg)}', '*');window.close();`,
+            details: msg,
+            script: postToOpenerAndMaybeClose(providerMsg),
           }),
           headers
         );
       }
 
       const token = tokenJson.access_token;
+      const providerMsg = providerMessageSuccess(token);
       return html(
         callbackPage({
           title: 'OAuth success',
           message: 'Authentication complete. You can close this window.',
-          script: `(function () {
-  var msg = '${providerMessageSuccess(token)}';
-  if (window.opener && window.opener.postMessage) {
-    window.opener.postMessage(msg, '*');
-  }
-  window.close();
-})();`,
+          script: postToOpenerAndMaybeClose(providerMsg),
         }),
         headers
       );

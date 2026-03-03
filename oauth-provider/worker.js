@@ -8,13 +8,27 @@
  * - DEFAULT_SCOPE (default: public_repo)
  */
 
-function html(body) {
-  return new Response(body, {
-    headers: {
-      'content-type': 'text/html; charset=utf-8',
-      'cache-control': 'no-store',
-    },
-  });
+function html(body, extraHeaders) {
+  const headers = new Headers(extraHeaders);
+  if (!headers.has('content-type')) headers.set('content-type', 'text/html; charset=utf-8');
+  if (!headers.has('cache-control')) headers.set('cache-control', 'no-store');
+  if (!headers.has('x-content-type-options')) headers.set('x-content-type-options', 'nosniff');
+  return new Response(body, { headers });
+}
+
+function callbackPage({ script, title = 'OAuth', message = 'Processing…' }) {
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>${title}</title>
+  </head>
+  <body>
+    <p>${message}</p>
+    <script>${script}</script>
+  </body>
+</html>`;
 }
 
 function json(data, status = 200) {
@@ -124,13 +138,23 @@ export default {
 
       if (!code) {
         return html(
-          `<script>window.opener&&window.opener.postMessage('${providerMessageError('Missing code')}', '*');window.close();</script>`
+          callbackPage({
+            title: 'OAuth error',
+            message: 'Missing code.',
+            script: `window.opener&&window.opener.postMessage('${providerMessageError('Missing code')}', '*');window.close();`,
+          }),
+          headers
         );
       }
 
       if (!state || !expected || state !== expected) {
         return html(
-          `<script>window.opener&&window.opener.postMessage('${providerMessageError('Invalid state')}', '*');window.close();</script>`
+          callbackPage({
+            title: 'OAuth error',
+            message: 'Invalid state.',
+            script: `window.opener&&window.opener.postMessage('${providerMessageError('Invalid state')}', '*');window.close();`,
+          }),
+          headers
         );
       }
 
@@ -152,23 +176,29 @@ export default {
       if (!tokenRes.ok || !tokenJson.access_token) {
         const msg = tokenJson.error_description || tokenJson.error || 'Token exchange failed';
         return html(
-          `<script>window.opener&&window.opener.postMessage('${providerMessageError(msg)}', '*');window.close();</script>`
+          callbackPage({
+            title: 'OAuth error',
+            message: 'Token exchange failed.',
+            script: `window.opener&&window.opener.postMessage('${providerMessageError(msg)}', '*');window.close();`,
+          }),
+          headers
         );
       }
 
       const token = tokenJson.access_token;
-      return new Response(
-        `<!doctype html><meta charset="utf-8" />
-<script>
-  (function () {
-    var msg = '${providerMessageSuccess(token)}';
-    if (window.opener && window.opener.postMessage) {
-      window.opener.postMessage(msg, '*');
-    }
-    window.close();
-  })();
-</script>`,
-        { headers }
+      return html(
+        callbackPage({
+          title: 'OAuth success',
+          message: 'Authentication complete. You can close this window.',
+          script: `(function () {
+  var msg = '${providerMessageSuccess(token)}';
+  if (window.opener && window.opener.postMessage) {
+    window.opener.postMessage(msg, '*');
+  }
+  window.close();
+})();`,
+        }),
+        headers
       );
     }
 

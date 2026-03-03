@@ -7,7 +7,7 @@ backend:
   base_url: https://sutte-oauth.takamitsu-iida.workers.dev
   auth_endpoint: auth
 
-publish_mode: editorial_workflow
+publish_mode: simple
 
 media_folder: "static/img/uploads"
 # GitHub Pages のプロジェクトページ（例: /sutte/）でも正しく参照できるよう相対パスにします。

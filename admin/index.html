@@ -5,9 +5,23 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>スッテ図鑑 管理</title>
+  <style>
+    .back-link {
+      position: sticky;
+      top: 0;
+      display: block;
+      padding: 10px 12px;
+      text-decoration: none;
+      z-index: 9999;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body>
+  <a class="back-link" href="../">← 元のページに戻る</a>
   <!-- Decap CMS (formerly Netlify CMS) -->
   <script>
     // NOTE: GitHub Pages配信のキャッシュ等で古い config.yml を掴む場合があるため、
@@ -25,7 +39,7 @@
         base_url: 'https://sutte-oauth.takamitsu-iida.workers.dev',
         auth_endpoint: 'auth',
       },
-      publish_mode: 'editorial_workflow',
+      publish_mode: 'simple',
       media_folder: 'static/img/uploads',
       public_folder: 'static/img/uploads',
       slug: {

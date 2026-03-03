@@ -29,6 +29,8 @@ GitHub Pages上の `./admin/` は Decap CMS の管理画面です。
 5. **画像** フィールドで画像を選ぶ（アップロードされ `static/img/uploads/` に保存されます）
 6. 右上の **Save** → **Publish**
 
+※このリポジトリは `publish_mode: simple` のため、保存すると PR を作らず `main` ブランチへ直接コミットされます。
+
 ただし、GitHub OAuth は「client secret」を安全に保持するサーバが必要なため、OAuthプロバイダを別途デプロイします。
 
 <br>

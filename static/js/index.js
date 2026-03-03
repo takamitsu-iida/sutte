@@ -59,9 +59,9 @@ function renderCard(item) {
     image = `.${image}`;
   }
   const thumbHtml = image
-    ? `<a class="thumb-link" href="${escapeHtml(image)}" target="_blank" rel="noopener">
+    ? `<button class="thumb-button" type="button" data-image="${escapeHtml(image)}" data-alt="${escapeHtml(displayName)}">
         <img class="thumb" src="${escapeHtml(image)}" alt="${escapeHtml(displayName)}" loading="lazy" />
-      </a>`
+      </button>`
     : `<div class="thumb" role="img" aria-label="画像なし"></div>`;
 
   const tags = [
@@ -90,6 +90,40 @@ function renderCard(item) {
       </div>
     </article>
   `.trim();
+}
+
+function ensureImageDialog() {
+  let dialog = document.getElementById('image-dialog');
+  if (dialog) return dialog;
+
+  dialog = document.createElement('dialog');
+  dialog.id = 'image-dialog';
+  dialog.className = 'image-dialog';
+  dialog.innerHTML = `
+    <form method="dialog" class="image-dialog-form">
+      <button class="image-dialog-close" value="close" aria-label="閉じる">×</button>
+      <img class="image-dialog-img" alt="" />
+    </form>
+  `.trim();
+
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+
+  document.body.appendChild(dialog);
+  return dialog;
+}
+
+function openImageInDialog(src, alt) {
+  const dialog = ensureImageDialog();
+  const img = dialog.querySelector('.image-dialog-img');
+  if (!img) return;
+  img.src = src;
+  img.alt = alt || '';
+
+  if (typeof dialog.showModal === 'function') {
+    dialog.showModal();
+  }
 }
 
 async function loadData() {
@@ -133,6 +167,14 @@ async function main() {
     }
 
     container.innerHTML = list.map(renderCard).join('');
+    container.addEventListener('click', (e) => {
+      const button = e.target && e.target.closest ? e.target.closest('.thumb-button') : null;
+      if (!button) return;
+      const src = button.getAttribute('data-image');
+      const alt = button.getAttribute('data-alt') || '';
+      if (!src) return;
+      openImageInDialog(src, alt);
+    });
     setStatus('');
   } catch (e) {
     console.error(e);

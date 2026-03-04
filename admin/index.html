@@ -62,7 +62,7 @@
                   widget: 'list',
                   summary: '{{fields.manufacturer}} / {{fields.productName}} ({{fields.go}}号 {{fields.color}})',
                   fields: [
-                    { label: 'ID', name: 'id', widget: 'string', required: true },
+                    { label: 'ID', name: 'id', widget: 'hidden', required: false },
                     { label: 'メーカー', name: 'manufacturer', widget: 'string', required: false },
                     { label: '商品名', name: 'productName', widget: 'string', required: false },
                     { label: 'シリーズ', name: 'series', widget: 'string', required: false },
@@ -90,6 +90,75 @@
   </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
+    (function () {
+      if (!window.CMS || typeof window.CMS.registerEventListener !== 'function') return;
+
+      const isNumericId = (value) => typeof value === 'string' && /^\d+$/.test(value);
+      const toInt = (value) => {
+        if (!isNumericId(value)) return null;
+        const n = Number.parseInt(value, 10);
+        return Number.isFinite(n) ? n : null;
+      };
+
+      window.CMS.registerEventListener({
+        name: 'preSave',
+        handler: ({ entry }) => {
+          try {
+            if (!entry || typeof entry.get !== 'function' || typeof entry.set !== 'function') return entry;
+
+            const collection = entry.get('collection');
+            const path = entry.get('path');
+            if (collection !== 'sutte') return entry;
+            if (typeof path === 'string' && !path.endsWith('static/data/sutte.json')) return entry;
+
+            const data = entry.get('data');
+            if (!data || typeof data.get !== 'function' || typeof data.set !== 'function') return entry;
+
+            const items = data.get('items');
+            if (!items || typeof items.map !== 'function' || typeof items.forEach !== 'function') return entry;
+
+            // 既存の数値IDの最大値を基準に、未採番/非数値/重複は max+1 以降で自動採番します。
+            let maxOriginal = 0;
+            const originalNumeric = new Set();
+            items.forEach((item) => {
+              if (!item || typeof item.get !== 'function') return;
+              const n = toInt(item.get('id'));
+              if (n === null) return;
+              originalNumeric.add(n);
+              if (n > maxOriginal) maxOriginal = n;
+            });
+
+            const seen = new Set();
+            let next = maxOriginal + 1;
+
+            const normalizedItems = items.map((item) => {
+              if (!item || typeof item.get !== 'function' || typeof item.set !== 'function') return item;
+
+              const rawId = item.get('id');
+              const n = toInt(rawId);
+              if (n !== null && !seen.has(n)) {
+                seen.add(n);
+                // 文字列として正規化しておく
+                return item.set('id', String(n));
+              }
+
+              while (seen.has(next) || originalNumeric.has(next)) next += 1;
+              const assigned = next;
+              seen.add(assigned);
+              next += 1;
+              return item.set('id', String(assigned));
+            });
+
+            return entry.set('data', data.set('items', normalizedItems));
+          } catch (e) {
+            // ここで落ちると保存自体ができなくなるので、失敗時は素通りします。
+            console.error('[sutte] preSave id auto-numbering failed', e);
+            return entry;
+          }
+        },
+      });
+    })();
+
     window.CMS && window.CMS.init({ config: window.__SUTTE_CMS_CONFIG__ });
   </script>
 </body>

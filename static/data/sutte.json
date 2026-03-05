@@ -65,6 +65,43 @@
                     "image": "static/img/uploads/blue_pink_clear.jpeg"
                 }
             ]
+        },
+        {
+            "id": "md35s",
+            "manufacturer": "ダイワ",
+            "productName": "ミッドスッテ３５Ｓ",
+            "description": "鱗ボディーのミッドスッテが３５ｍｍでリニューアル",
+            "size": "35",
+            "url": "https://www.daiwa.com/jp/product/loy8l5t",
+            "variants": [
+                {
+                    "color": "ＫＭケイムラハダカ",
+                    "image": "static/img/uploads/"
+                },
+                {
+                    "color": "ＰＭピンクハダカ",
+                    "image": "static/img/uploads/"
+                },
+                {
+                    "color": "Ｇグリーンハダカ",
+                    "image": "static/img/uploads/"
+                },
+                {
+                    "color": "ＰＰパープルハダカ",
+                    "image": "static/img/uploads/"
+                },
+                {
+                    "color": "ＧＤゴールドハダカ",
+                    "image": "static/img/uploads/"
+                },
+                {
+                    "color": "ＧＫギョクロハダカ",
+                    "image": "static/img/uploads/"
+                },
+                {
+                    "color": "ＬＢライトＢハダカ",
+                    "image": "static/img/uploads/"
+                }]
         }
     ]
 }

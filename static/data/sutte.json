@@ -4,8 +4,137 @@
       "id": "1",
       "manufacturer": "ダイワ",
       "productName": "MD35Sリフレクト",
+      "color": "青帽　グリーン／クリアー",
       "size": "35",
-      "image": "static/img/uploads/iphone-chrome.jpg"
+      "image": "static/img/uploads/aobou_green_clear.jpeg",
+      "url": "https://www.daiwa.com/jp/product/670vnhe"
+    },
+    {
+        "id": "2",
+        "manufacturer": "ダイワ",
+        "productName": "MD35Sリフレクト",
+        "color": "グリーン帽　ライトブルー／クリアー",
+        "size": "35",
+        "image": "static/img/uploads/greenbou_light_blue_clear.jpeg",
+        "url": "https://www.daiwa.com/jp/product/670vnhe"
+
+    },
+    {
+        "id": "3",
+        "manufacturer": "ダイワ",
+        "productName": "MD35Sリフレクト",
+        "color": "マッチャ帽　　ギョクロ／ピンククリアー",
+        "size": "35",
+        "image": "static/img/uploads/machabou_gyokuro_pink_clear.jpeg",
+        "url": "https://www.daiwa.com/jp/product/670vnhe"
+    },
+    {
+        "id": "4",
+        "manufacturer": "ダイワ",
+        "productName": "MD35Sリフレクト",
+        "color": "ピンク帽　ブルー／ピンククリアー",
+        "size": "35",
+        "image": "static/img/uploads/pinkbou_blue_pink_clear.jpeg",
+        "url": "https://www.daiwa.com/jp/product/670vnhe"
+    },
+    {
+        "id": "5",
+        "manufacturer": "ダイワ",
+        "productName": "MD35Sリフレクト",
+        "color": "ケイムラ／クリアー",
+        "size": "35",
+        "image": "static/img/uploads/keimura_clear.jpeg",
+        "url": "https://www.daiwa.com/jp/product/670vnhe"
+    },
+    {
+        "id": "6",
+        "manufacturer": "ダイワ",
+        "productName": "MD35Sリフレクト",
+        "color": "ピンク／クリアー",
+        "size": "35",
+        "image": "static/img/uploads/pink_clear.jpeg",
+        "url": "https://www.daiwa.com/jp/product/670vnhe"
+    },
+    {
+        "id": "7",
+        "manufacturer": "ダイワ",
+        "productName": "MD35Sリフレクト",
+        "color": "オレンジ／クリアー",
+        "size": "35",
+        "image": "static/img/uploads/",
+        "url": "https://www.daiwa.com/jp/product/670vnhe"
+    },
+    {
+        "id": "8",
+        "manufacturer": "ダイワ",
+        "productName": "MD35Sリフレクト",
+        "color": "ギョクロ／クリアー",
+        "size": "35",
+        "image": "static/img/uploads/gyokuro_clear.jpeg",
+        "url": "https://www.daiwa.com/jp/product/670vnhe"
+    },
+    {
+        "id": "9",
+        "manufacturer": "ダイワ",
+        "productName": "MD35Sリフレクト",
+        "color": "グリーン／クリアー",
+        "size": "35",
+        "image": "static/img/uploads/green_clear.jpeg",
+        "url": "https://www.daiwa.com/jp/product/670vnhe"
+    },
+    {
+        "id": "10",
+        "manufacturer": "ダイワ",
+        "productName": "MD35Sリフレクト",
+        "color": "ブルー／クリアー",
+        "size": "35",
+        "image": "static/img/uploads/blue_clear.jpeg",
+        "url": "https://www.daiwa.com/jp/product/670vnhe"
+    },
+    {
+        "id": "11",
+        "manufacturer": "ダイワ",
+        "productName": "MD35Sリフレクト",
+        "color": "ライトブルー／クリアー",
+        "size": "35",
+        "image": "static/img/uploads/light_blu_clear.jpeg",
+        "url": "https://www.daiwa.com/jp/product/670vnhe"
+    },
+    {
+        "id": "12",
+        "manufacturer": "ダイワ",
+        "productName": "MD35Sリフレクト",
+        "color": "オレンジ／クリアー",
+        "size": "35",
+        "image": "static/img/uploads/orange_clear.jpeg",
+        "url": "https://www.daiwa.com/jp/product/670vnhe"
+    },
+    {
+        "id": "13",
+        "manufacturer": "ダイワ",
+        "productName": "MD35Sリフレクト",
+        "color": "ゴールド／クリアー",
+        "size": "35",
+        "image": "static/img/uploads/gold_clear.jpeg",
+        "url": 	"https://www.daiwa.com/jp/product/670vnhe"
+    },
+    {
+     	"id": 14,
+     	"manufacturer":"ダイワ",
+     	"productName":"MD35Sリフレクト",
+     	"color":"ギョクロ／ピンククリアー",
+     	"size":"35",
+     	"image":"static/img/uploads/gyokuro_pink_clear.jpeg",
+     	"url":"https://www.daiwa.com/jp/product/670vnhe"
+    },
+    {
+     	"id": 15,
+     	"manufacturer":"ダイワ",
+     	"productName":"MD35Sリフレクト",
+     	"color":"ブルー／ピンククリアー",
+     	"size":"35",
+     	"image":"static/img/uploads/blue_pink_clear.jpeg",
+     	"url":"https://www.daiwa.com/jp/product/670vnhe"
     }
   ]
 }

@@ -31,15 +31,24 @@ function buildEditUrl() {
 }
 
 function normalizeSutteList(payload) {
-  if (!payload) return [];
+  if (!payload) return { kind: 'variants', variants: [] };
 
-  // 形式A: { "items": [...] }
-  if (Array.isArray(payload.items)) return payload.items;
+  // 新形式: { "products": [...] }
+  if (Array.isArray(payload.products)) {
+    return { kind: 'products', products: payload.products };
+  }
 
-  // 形式B: [...]
-  if (Array.isArray(payload)) return payload;
+  // 旧形式A: { "items": [...] }
+  if (Array.isArray(payload.items)) {
+    return { kind: 'variants', variants: payload.items };
+  }
 
-  return [];
+  // 旧形式B: [...]
+  if (Array.isArray(payload)) {
+    return { kind: 'variants', variants: payload };
+  }
+
+  return { kind: 'variants', variants: [] };
 }
 
 function formatTag(label, value) {
@@ -64,29 +73,33 @@ function normalizeImagePath(image) {
   return normalized;
 }
 
-function renderVariantCard(item, groupLabel) {
-  const color = item.color ?? '';
-  const title = color || String(item.id ?? '（詳細未設定）');
+function renderVariantCard(variant, groupLabel, product = null) {
+  const color = variant?.color ?? '';
+  const title = color || String(variant?.id ?? '（詳細未設定）');
   const alt = [groupLabel, title].filter(Boolean).join(' / ');
 
-  const image = normalizeImagePath(item.image);
+  const image = normalizeImagePath(variant?.image);
   const thumbHtml = image
     ? `<button class="thumb-button" type="button" data-image="${escapeHtml(image)}" data-alt="${escapeHtml(alt)}">
         <img class="thumb" src="${escapeHtml(image)}" alt="${escapeHtml(alt)}" loading="lazy" />
       </button>`
     : `<div class="thumb" role="img" aria-label="画像なし"></div>`;
 
+  const size = variant?.size ?? product?.size;
+  const go = variant?.go ?? product?.go;
+  const weight = variant?.weight ?? product?.weight;
+
   const tags = [
-    formatTag('サイズ', item.size),
-    formatTag('号', item.go),
-    formatTag('重さ', item.weight),
+    formatTag('サイズ', size),
+    formatTag('号', go),
+    formatTag('重さ', weight),
   ].filter(Boolean);
 
   const metaLines = [
-    item.series ? `シリーズ: ${item.series}` : '',
+    (variant?.series ?? product?.series) ? `シリーズ: ${variant?.series ?? product?.series}` : '',
   ].filter(Boolean);
 
-  const note = item.note ?? '';
+  const note = variant?.note ?? '';
 
   return `
     <article class="card">
@@ -111,8 +124,8 @@ function groupByName(list) {
   return groups;
 }
 
-function renderGroupedList(list) {
-  const groups = groupByName(list);
+function renderGroupedList(variants) {
+  const groups = groupByName(variants);
   const sections = [];
 
   for (const [label, items] of groups.entries()) {
@@ -121,6 +134,34 @@ function renderGroupedList(list) {
         <h3 class="group-title">${escapeHtml(label)} <span class="group-count">(${items.length})</span></h3>
         <div class="grid" aria-label="${escapeHtml(label)} の一覧">
           ${items.map((item) => renderVariantCard(item, label)).join('')}
+        </div>
+      </section>
+    `.trim());
+  }
+
+  return sections.join('');
+}
+
+function getProductLabel(product) {
+  const manufacturer = product?.manufacturer ?? '';
+  const productName = product?.productName ?? '';
+  return [manufacturer, productName].filter(Boolean).join(' / ') || String(product?.id ?? '（名称未設定）');
+}
+
+function renderProductList(products) {
+  const sections = [];
+
+  for (const product of products) {
+    const label = getProductLabel(product);
+    const description = product?.description ?? '';
+    const variants = Array.isArray(product?.variants) ? product.variants : [];
+
+    sections.push(`
+      <section class="group" aria-label="${escapeHtml(label)}">
+        <h3 class="group-title">${escapeHtml(label)} <span class="group-count">(${variants.length})</span></h3>
+        ${description ? `<p class="group-desc">${escapeHtml(description)}</p>` : ''}
+        <div class="grid" aria-label="${escapeHtml(label)} の色一覧">
+          ${variants.map((v) => renderVariantCard(v, label, product)).join('')}
         </div>
       </section>
     `.trim());
@@ -189,21 +230,32 @@ async function main() {
 
   try {
     const payload = await loadData();
-    const list = normalizeSutteList(payload);
+    const normalized = normalizeSutteList(payload);
+
+    const variantsCount =
+      normalized.kind === 'products'
+        ? normalized.products.reduce((sum, p) => sum + (Array.isArray(p?.variants) ? p.variants.length : 0), 0)
+        : normalized.variants.length;
 
     const countEl = el('sutte-count');
-    if (countEl) countEl.textContent = String(list.length);
+    if (countEl) countEl.textContent = String(variantsCount);
 
     const container = el('sutte-list');
     if (!container) return;
 
-    if (list.length === 0) {
+    const isEmpty =
+      normalized.kind === 'products'
+        ? normalized.products.length === 0
+        : normalized.variants.length === 0;
+
+    if (isEmpty) {
       container.innerHTML = '';
       setStatus('データが空です。static/data/sutte.json を編集してください。');
       return;
     }
 
-    container.innerHTML = renderGroupedList(list);
+    container.innerHTML =
+      normalized.kind === 'products' ? renderProductList(normalized.products) : renderGroupedList(normalized.variants);
     container.addEventListener('click', (e) => {
       const button = e.target && e.target.closest ? e.target.closest('.thumb-button') : null;
       if (!button) return;

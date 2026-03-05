@@ -27,23 +27,31 @@ collections:
         file: "static/data/sutte.json"
         format: "json"
         fields:
-          - label: "items"
-            name: "items"
+          - label: "products"
+            name: "products"
             widget: "list"
-            summary: "{{fields.manufacturer}} / {{fields.productName}} ({{fields.go}}号 {{fields.color}})"
+            summary: "{{fields.manufacturer}} / {{fields.productName}} ({{fields.variants.length}}件)"
             fields:
-              - { label: "ID", name: "id", widget: "hidden", required: false }
+              - { label: "商品ID", name: "id", widget: "string", required: false, hint: "例: md35s-reflect" }
               - { label: "メーカー", name: "manufacturer", widget: "string", required: false }
               - { label: "商品名", name: "productName", widget: "string", required: false }
+              - { label: "説明", name: "description", widget: "text", required: false }
               - { label: "シリーズ", name: "series", widget: "string", required: false }
-              - { label: "サイズ(表示用)", name: "size", widget: "string", required: false, hint: "例: 3.0号" }
+              - { label: "サイズ(表示用)", name: "size", widget: "string", required: false, hint: "例: 3.0号 / 35" }
               - { label: "号(go)", name: "go", widget: "string", required: false, hint: "例: 3.0" }
               - { label: "重さ", name: "weight", widget: "string", required: false, hint: "例: 15g" }
-              - { label: "カラー", name: "color", widget: "string", required: false }
-              - label: "画像"
-                name: "image"
-                widget: "image"
-                required: false
-                allow_multiple: false
-                hint: "アップロードすると /static/img/uploads に保存されます"
-              - { label: "メモ", name: "note", widget: "text", required: false }
+              - { label: "URL", name: "url", widget: "string", required: false }
+              - label: "variants"
+                name: "variants"
+                widget: "list"
+                summary: "{{fields.color}}"
+                fields:
+                  - { label: "バリエーションID", name: "id", widget: "hidden", required: false }
+                  - { label: "カラー", name: "color", widget: "string", required: false }
+                  - label: "画像"
+                    name: "image"
+                    widget: "image"
+                    required: false
+                    allow_multiple: false
+                    hint: "アップロードすると /static/img/uploads に保存されます"
+                  - { label: "メモ", name: "note", widget: "text", required: false }

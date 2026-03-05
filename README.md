@@ -10,7 +10,31 @@ https://takamitsu-iida.github.io/sutte/
 ## データの管理
 
 - 一覧データ: `static/data/sutte.json`
-- 画像: `static/img/uploads/` に保存し、JSON の `image` には `static/img/uploads/xxx.jpg` のように入ります（Decap CMS でアップロードすると自動で設定されます）
+- 画像: `static/img/uploads/` に保存し、JSON の `variants[].image` には `static/img/uploads/xxx.jpg` のように入ります（Decap CMS でアップロードすると自動で設定されます）
+
+### データ構造（2026-03 以降）
+
+`static/data/sutte.json` は以下の形です。
+
+- `products[]`: 商品（メーカー/商品名/説明など）
+- `products[].variants[]`: 色違い（カラー/画像/メモ）
+
+例（概略）:
+
+```json
+{
+	"products": [
+		{
+			"manufacturer": "...",
+			"productName": "...",
+			"description": "...",
+			"variants": [
+				{ "color": "...", "image": "static/img/uploads/...jpg" }
+			]
+		}
+	]
+}
+```
 
 GitHub Pagesは静的ホスティングのため、ページ上から直接GitHubへ保存はできません（認証・API連携が必要です）。
 編集はGitHub上で `static/data/sutte.json` を更新してコミット（またはPR）してください。

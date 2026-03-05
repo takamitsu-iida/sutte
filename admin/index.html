@@ -57,28 +57,39 @@
               format: 'json',
               fields: [
                 {
-                  label: 'items',
-                  name: 'items',
+                  label: 'products',
+                  name: 'products',
                   widget: 'list',
-                  summary: '{{fields.manufacturer}} / {{fields.productName}} ({{fields.go}}号 {{fields.color}})',
+                  summary: '{{fields.manufacturer}} / {{fields.productName}} ({{fields.variants.length}}件)',
                   fields: [
-                    { label: 'ID', name: 'id', widget: 'hidden', required: false },
+                    { label: '商品ID', name: 'id', widget: 'string', required: false, hint: '例: md35s-reflect' },
                     { label: 'メーカー', name: 'manufacturer', widget: 'string', required: false },
                     { label: '商品名', name: 'productName', widget: 'string', required: false },
+                    { label: '説明', name: 'description', widget: 'text', required: false },
                     { label: 'シリーズ', name: 'series', widget: 'string', required: false },
-                    { label: 'サイズ(表示用)', name: 'size', widget: 'string', required: false, hint: '例: 3.0号' },
+                    { label: 'サイズ(表示用)', name: 'size', widget: 'string', required: false, hint: '例: 3.0号 / 35' },
                     { label: '号(go)', name: 'go', widget: 'string', required: false, hint: '例: 3.0' },
                     { label: '重さ', name: 'weight', widget: 'string', required: false, hint: '例: 15g' },
-                    { label: 'カラー', name: 'color', widget: 'string', required: false },
+                    { label: 'URL', name: 'url', widget: 'string', required: false },
                     {
-                      label: '画像',
-                      name: 'image',
-                      widget: 'image',
-                      required: false,
-                      allow_multiple: false,
-                      hint: 'アップロードすると /static/img/uploads に保存されます',
+                      label: 'variants',
+                      name: 'variants',
+                      widget: 'list',
+                      summary: '{{fields.color}}',
+                      fields: [
+                        { label: 'バリエーションID', name: 'id', widget: 'hidden', required: false },
+                        { label: 'カラー', name: 'color', widget: 'string', required: false },
+                        {
+                          label: '画像',
+                          name: 'image',
+                          widget: 'image',
+                          required: false,
+                          allow_multiple: false,
+                          hint: 'アップロードすると /static/img/uploads に保存されます',
+                        },
+                        { label: 'メモ', name: 'note', widget: 'text', required: false },
+                      ],
                     },
-                    { label: 'メモ', name: 'note', widget: 'text', required: false },
                   ],
                 },
               ],
@@ -114,42 +125,55 @@
             const data = entry.get('data');
             if (!data || typeof data.get !== 'function' || typeof data.set !== 'function') return entry;
 
-            const items = data.get('items');
-            if (!items || typeof items.map !== 'function' || typeof items.forEach !== 'function') return entry;
+            const products = data.get('products');
+            if (!products || typeof products.map !== 'function' || typeof products.forEach !== 'function') return entry;
 
-            // 既存の数値IDの最大値を基準に、未採番/非数値/重複は max+1 以降で自動採番します。
+            // 既存の数値IDの最大値を基準に、variants の未採番/非数値/重複は max+1 以降で自動採番します。
             let maxOriginal = 0;
             const originalNumeric = new Set();
-            items.forEach((item) => {
-              if (!item || typeof item.get !== 'function') return;
-              const n = toInt(item.get('id'));
-              if (n === null) return;
-              originalNumeric.add(n);
-              if (n > maxOriginal) maxOriginal = n;
+
+            products.forEach((product) => {
+              if (!product || typeof product.get !== 'function') return;
+              const variants = product.get('variants');
+              if (!variants || typeof variants.forEach !== 'function') return;
+              variants.forEach((variant) => {
+                if (!variant || typeof variant.get !== 'function') return;
+                const n = toInt(variant.get('id'));
+                if (n === null) return;
+                originalNumeric.add(n);
+                if (n > maxOriginal) maxOriginal = n;
+              });
             });
 
             const seen = new Set();
             let next = maxOriginal + 1;
 
-            const normalizedItems = items.map((item) => {
-              if (!item || typeof item.get !== 'function' || typeof item.set !== 'function') return item;
+            const normalizedProducts = products.map((product) => {
+              if (!product || typeof product.get !== 'function' || typeof product.set !== 'function') return product;
+              const variants = product.get('variants');
+              if (!variants || typeof variants.map !== 'function') return product;
 
-              const rawId = item.get('id');
-              const n = toInt(rawId);
-              if (n !== null && !seen.has(n)) {
-                seen.add(n);
-                // 文字列として正規化しておく
-                return item.set('id', String(n));
-              }
+              const normalizedVariants = variants.map((variant) => {
+                if (!variant || typeof variant.get !== 'function' || typeof variant.set !== 'function') return variant;
 
-              while (seen.has(next) || originalNumeric.has(next)) next += 1;
-              const assigned = next;
-              seen.add(assigned);
-              next += 1;
-              return item.set('id', String(assigned));
+                const rawId = variant.get('id');
+                const n = toInt(rawId);
+                if (n !== null && !seen.has(n)) {
+                  seen.add(n);
+                  return variant.set('id', String(n));
+                }
+
+                while (seen.has(next) || originalNumeric.has(next)) next += 1;
+                const assigned = next;
+                seen.add(assigned);
+                next += 1;
+                return variant.set('id', String(assigned));
+              });
+
+              return product.set('variants', normalizedVariants);
             });
 
-            return entry.set('data', data.set('items', normalizedItems));
+            return entry.set('data', data.set('products', normalizedProducts));
           } catch (e) {
             // ここで落ちると保存自体ができなくなるので、失敗時は素通りします。
             console.error('[sutte] preSave id auto-numbering failed', e);

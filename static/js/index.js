@@ -25,6 +25,11 @@ function escapeHtml(value) {
     .replaceAll("'", '&#039;');
 }
 
+function formatPlainTextHtml(value) {
+  if (value === undefined || value === null || value === '') return '';
+  return escapeHtml(value).replaceAll('\n', '<br />');
+}
+
 function buildEditUrl() {
   if (!GITHUB_REPO) return null;
   return `https://github.com/${GITHUB_REPO}/edit/${GITHUB_BRANCH}/${GITHUB_DATA_FILE}`;
@@ -159,7 +164,7 @@ function renderProductList(products) {
     sections.push(`
       <section class="group" aria-label="${escapeHtml(label)}">
         <h3 class="group-title">${escapeHtml(label)} <span class="group-count">(${variants.length})</span></h3>
-        ${description ? `<p class="group-desc">${escapeHtml(description)}</p>` : ''}
+        ${description ? `<p class="group-desc">${formatPlainTextHtml(description)}</p>` : ''}
         <div class="grid" aria-label="${escapeHtml(label)} の色一覧">
           ${variants.map((v) => renderVariantCard(v, label, product)).join('')}
         </div>

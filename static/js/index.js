@@ -47,20 +47,32 @@ function formatTag(label, value) {
   return `<span class="tag">${escapeHtml(label)}: ${escapeHtml(value)}</span>`;
 }
 
-function renderCard(item) {
-  const manufacturer = item.manufacturer ?? '';
-  const productName = item.productName ?? '';
-  const displayName = [manufacturer, productName].filter(Boolean).join(' / ') || (item.id ?? '（名称未設定）');
+function getGroupLabel(item) {
+  const manufacturer = item?.manufacturer ?? '';
+  const productName = item?.productName ?? '';
+  return [manufacturer, productName].filter(Boolean).join(' / ') || String(item?.id ?? '（名称未設定）');
+}
 
-  let image = item.image ?? '';
+function normalizeImagePath(image) {
+  let normalized = (image ?? '').toString().trim();
+  if (!normalized || normalized.endsWith('/')) return '';
   // GitHub Pages のプロジェクトページでは "/static/..." がドメイン直下を指して壊れるため、
   // 既存データ互換として "./static/..." に寄せます。
-  if (typeof image === 'string' && image.startsWith('/static/')) {
-    image = `.${image}`;
+  if (normalized.startsWith('/static/')) {
+    normalized = `.${normalized}`;
   }
+  return normalized;
+}
+
+function renderVariantCard(item, groupLabel) {
+  const color = item.color ?? '';
+  const title = color || String(item.id ?? '（詳細未設定）');
+  const alt = [groupLabel, title].filter(Boolean).join(' / ');
+
+  const image = normalizeImagePath(item.image);
   const thumbHtml = image
-    ? `<button class="thumb-button" type="button" data-image="${escapeHtml(image)}" data-alt="${escapeHtml(displayName)}">
-        <img class="thumb" src="${escapeHtml(image)}" alt="${escapeHtml(displayName)}" loading="lazy" />
+    ? `<button class="thumb-button" type="button" data-image="${escapeHtml(image)}" data-alt="${escapeHtml(alt)}">
+        <img class="thumb" src="${escapeHtml(image)}" alt="${escapeHtml(alt)}" loading="lazy" />
       </button>`
     : `<div class="thumb" role="img" aria-label="画像なし"></div>`;
 
@@ -68,12 +80,9 @@ function renderCard(item) {
     formatTag('サイズ', item.size),
     formatTag('号', item.go),
     formatTag('重さ', item.weight),
-    formatTag('カラー', item.color),
   ].filter(Boolean);
 
   const metaLines = [
-    manufacturer ? `メーカー: ${manufacturer}` : '',
-    productName ? `商品名: ${productName}` : '',
     item.series ? `シリーズ: ${item.series}` : '',
   ].filter(Boolean);
 
@@ -83,13 +92,41 @@ function renderCard(item) {
     <article class="card">
       ${thumbHtml}
       <div class="card-body">
-        <h3 class="name">${escapeHtml(displayName)}</h3>
-        <p class="meta">${metaLines.map((l) => escapeHtml(l)).join('<br />')}</p>
-        <div class="tags">${tags.join('')}</div>
+        <h4 class="name">${escapeHtml(title)}</h4>
+        ${metaLines.length ? `<p class="meta">${metaLines.map((l) => escapeHtml(l)).join('<br />')}</p>` : ''}
+        ${tags.length ? `<div class="tags">${tags.join('')}</div>` : ''}
         ${note ? `<p class="note">${escapeHtml(note)}</p>` : ''}
       </div>
     </article>
   `.trim();
+}
+
+function groupByName(list) {
+  const groups = new Map();
+  for (const item of list) {
+    const key = getGroupLabel(item);
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(item);
+  }
+  return groups;
+}
+
+function renderGroupedList(list) {
+  const groups = groupByName(list);
+  const sections = [];
+
+  for (const [label, items] of groups.entries()) {
+    sections.push(`
+      <section class="group" aria-label="${escapeHtml(label)}">
+        <h3 class="group-title">${escapeHtml(label)} <span class="group-count">(${items.length})</span></h3>
+        <div class="grid" aria-label="${escapeHtml(label)} の一覧">
+          ${items.map((item) => renderVariantCard(item, label)).join('')}
+        </div>
+      </section>
+    `.trim());
+  }
+
+  return sections.join('');
 }
 
 function ensureImageDialog() {
@@ -166,7 +203,7 @@ async function main() {
       return;
     }
 
-    container.innerHTML = list.map(renderCard).join('');
+    container.innerHTML = renderGroupedList(list);
     container.addEventListener('click', (e) => {
       const button = e.target && e.target.closest ? e.target.closest('.thumb-button') : null;
       if (!button) return;

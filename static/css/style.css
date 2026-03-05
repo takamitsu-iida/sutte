@@ -120,6 +120,26 @@ a {
   color: var(--muted);
 }
 
+.groups {
+  display: grid;
+  gap: 16px;
+}
+
+.group {
+  display: grid;
+  gap: 10px;
+}
+
+.group-title {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.group-count {
+  color: var(--muted);
+  font-weight: 400;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -146,7 +166,7 @@ a {
 .thumb {
   width: 100%;
   height: 140px;
-  object-fit: cover;
+  object-fit: contain;
   background: rgba(255, 255, 255, 0.06);
 }
 

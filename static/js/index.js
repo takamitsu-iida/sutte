@@ -61,6 +61,29 @@ function formatTag(label, value) {
   return `<span class="tag">${escapeHtml(label)}: ${escapeHtml(value)}</span>`;
 }
 
+function normalizeHttpUrl(url) {
+  const raw = (url ?? '').toString().trim();
+  if (!raw) return '';
+  if (raw.startsWith('https://') || raw.startsWith('http://')) return raw;
+  return '';
+}
+
+function renderGroupMeta({ size, url }) {
+  const sizeText = (size ?? '').toString().trim();
+  const safeUrl = normalizeHttpUrl(url);
+  if (!sizeText && !safeUrl) return '';
+
+  const parts = [];
+  if (sizeText) parts.push(`<span>サイズ: ${escapeHtml(sizeText)}</span>`);
+  if (safeUrl) {
+    parts.push(
+      `<a class="group-link" href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener">商品ページ</a>`,
+    );
+  }
+
+  return `<p class="group-meta">${parts.join('<span class="group-meta-sep">/</span>')}</p>`;
+}
+
 function getGroupLabel(item) {
   const manufacturer = item?.manufacturer ?? '';
   const productName = item?.productName ?? '';
@@ -80,7 +103,7 @@ function normalizeImagePath(image) {
 
 function renderVariantCard(variant, groupLabel, product = null) {
   const color = variant?.color ?? '';
-  const title = color || String(variant?.id ?? '（詳細未設定）');
+  const title = color || '（カラー未設定）';
   const alt = [groupLabel, title].filter(Boolean).join(' / ');
 
   const image = normalizeImagePath(variant?.image);
@@ -95,7 +118,6 @@ function renderVariantCard(variant, groupLabel, product = null) {
   const weight = variant?.weight ?? product?.weight;
 
   const tags = [
-    formatTag('サイズ', size),
     formatTag('号', go),
     formatTag('重さ', weight),
   ].filter(Boolean);
@@ -134,9 +156,14 @@ function renderGroupedList(variants) {
   const sections = [];
 
   for (const [label, items] of groups.entries()) {
+    const groupSize = items.find((x) => x?.size)?.size ?? '';
+    const groupUrl = items.find((x) => x?.url)?.url ?? '';
+    const groupMetaHtml = renderGroupMeta({ size: groupSize, url: groupUrl });
+
     sections.push(`
       <section class="group" aria-label="${escapeHtml(label)}">
         <h3 class="group-title">${escapeHtml(label)} <span class="group-count">(${items.length})</span></h3>
+        ${groupMetaHtml}
         <div class="grid" aria-label="${escapeHtml(label)} の一覧">
           ${items.map((item) => renderVariantCard(item, label)).join('')}
         </div>
@@ -160,10 +187,12 @@ function renderProductList(products) {
     const label = getProductLabel(product);
     const description = product?.description ?? '';
     const variants = Array.isArray(product?.variants) ? product.variants : [];
+    const groupMetaHtml = renderGroupMeta({ size: product?.size, url: product?.url });
 
     sections.push(`
       <section class="group" aria-label="${escapeHtml(label)}">
         <h3 class="group-title">${escapeHtml(label)} <span class="group-count">(${variants.length})</span></h3>
+        ${groupMetaHtml}
         ${description ? `<p class="group-desc">${formatPlainTextHtml(description)}</p>` : ''}
         <div class="grid" aria-label="${escapeHtml(label)} の色一覧">
           ${variants.map((v) => renderVariantCard(v, label, product)).join('')}

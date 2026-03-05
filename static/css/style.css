@@ -140,6 +140,23 @@ a {
   color: var(--muted);
 }
 
+.group-meta {
+  margin: 0;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.group-meta-sep {
+  opacity: 0.6;
+}
+
+.group-link {
+  text-decoration: underline;
+}
+
 .group-count {
   color: var(--muted);
   font-weight: 400;

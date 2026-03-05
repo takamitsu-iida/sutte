@@ -46,7 +46,6 @@ collections:
                 widget: "list"
                 summary: "{{fields.color}}"
                 fields:
-                  - { label: "バリエーションID", name: "id", widget: "hidden", required: false }
                   - { label: "カラー", name: "color", widget: "string", required: false }
                   - label: "画像"
                     name: "image"

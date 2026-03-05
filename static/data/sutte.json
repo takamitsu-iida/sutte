@@ -4,82 +4,63 @@
             "id": "md35s-reflect",
             "manufacturer": "ダイワ",
             "productName": "MD35Sリフレクト",
-            "description": "",
+            "description": "MD35Sリフレクトは、ダイワのスッテシリーズの一つで、35mmのサイズで提供されるスッテです。リフレクトシリーズは、光を反射する特殊な素材を使用しており、夜釣りや深海釣りなどの暗い環境での視認性を向上させることが特徴です。多彩なカラーバリエーションがあり、釣り人の好みに合わせて選ぶことができます。",
             "size": "35",
             "url": "https://www.daiwa.com/jp/product/670vnhe",
             "variants": [
                 {
-                    "id": "1",
                     "color": "青帽　グリーン／クリアー",
                     "image": "static/img/uploads/aobou_green_clear.jpeg"
                 },
                 {
-                    "id": "2",
                     "color": "グリーン帽　ライトブルー／クリアー",
                     "image": "static/img/uploads/greenbou_light_blue_clear.jpeg"
                 },
                 {
-                    "id": "3",
-                    "color": "マッチャ帽　　ギョクロ／ピンククリアー",
+                    "color": "マッチャ帽　ギョクロ／ピンククリアー",
                     "image": "static/img/uploads/machabou_gyokuro_pink_clear.jpeg"
                 },
                 {
-                    "id": "4",
                     "color": "ピンク帽　ブルー／ピンククリアー",
                     "image": "static/img/uploads/pinkbou_blue_pink_clear.jpeg"
                 },
                 {
-                    "id": "5",
                     "color": "ケイムラ／クリアー",
                     "image": "static/img/uploads/keimura_clear.jpeg"
                 },
                 {
-                    "id": "6",
                     "color": "ピンク／クリアー",
                     "image": "static/img/uploads/pink_clear.jpeg"
                 },
                 {
-                    "id": "7",
-                    "color": "オレンジ／クリアー",
-                    "image": "static/img/uploads/"
-                },
-                {
-                    "id": "8",
-                    "color": "ギョクロ／クリアー",
-                    "image": "static/img/uploads/gyokuro_clear.jpeg"
-                },
-                {
-                    "id": "9",
-                    "color": "グリーン／クリアー",
-                    "image": "static/img/uploads/green_clear.jpeg"
-                },
-                {
-                    "id": "10",
-                    "color": "ブルー／クリアー",
-                    "image": "static/img/uploads/blue_clear.jpeg"
-                },
-                {
-                    "id": "11",
-                    "color": "ライトブルー／クリアー",
-                    "image": "static/img/uploads/light_blue_clear.jpeg"
-                },
-                {
-                    "id": "12",
                     "color": "オレンジ／クリアー",
                     "image": "static/img/uploads/orange_clear.jpeg"
                 },
                 {
-                    "id": "13",
+                    "color": "ギョクロ／クリアー",
+                    "image": "static/img/uploads/gyokuro_clear.jpeg"
+                },
+                {
+                    "color": "グリーン／クリアー",
+                    "image": "static/img/uploads/green_clear.jpeg"
+                },
+                {
+                    "color": "ブルー／クリアー",
+                    "image": "static/img/uploads/blue_clear.jpeg"
+                },
+                {
+                    "color": "ライトブルー／クリアー",
+                    "image": "static/img/uploads/light_blue_clear.jpeg"
+                },
+                {
                     "color": "ゴールド／クリアー",
                     "image": "static/img/uploads/gold_clear.jpeg"
                 },
                 {
-                    "id": "14",
                     "color": "ギョクロ／ピンククリアー",
                     "image": "static/img/uploads/gyokuro_pink_clear.jpeg"
                 },
                 {
-                    "id": "15",
                     "color": "ブルー／ピンククリアー",
                     "image": "static/img/uploads/blue_pink_clear.jpeg"
                 }

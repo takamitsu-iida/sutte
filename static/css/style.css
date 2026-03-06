@@ -122,7 +122,12 @@ a {
 
 .groups {
   display: grid;
-  gap: 16px;
+  gap: 28px;
+}
+
+.groups > .group + .group {
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
 }
 
 .group {

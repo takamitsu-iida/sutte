@@ -53,4 +53,5 @@ collections:
                     required: false
                     allow_multiple: false
                     hint: "アップロードすると /static/img/uploads に保存されます"
+                  - { label: "JAN", name: "jan", widget: "string", required: false, hint: "例: 4550133... (13桁)" }
                   - { label: "メモ", name: "note", widget: "text", required: false }

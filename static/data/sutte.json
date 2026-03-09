@@ -4,7 +4,7 @@
             "id": "md35s-reflect",
             "manufacturer": "ダイワ",
             "productName": "ミッドスッテ35S リフレクト／帽",
-            "description": "ボディー内部の骨が紫外線で光るように設計されたリフレクトボディー。アピール力アップ、針は実績の高い0.5mm6本立てを採用",
+            "description": "ボディー内部の骨が紫外線で光るように設計されたリフレクトボディー。アピール力アップ、針は実績の高い0.5mm6本立てを採用。",
             "size": "35",
             "url": "https://www.daiwa.com/jp/product/670vnhe",
             "variants": [
@@ -98,7 +98,7 @@
             "id": "md35s",
             "manufacturer": "ダイワ",
             "productName": "ミッドスッテ３５Ｓ",
-            "description": "鱗ボディーのミッドスッテが３５ｍｍでリニューアル",
+            "description": "鱗ボディーのミッドスッテが３５ｍｍでリニューアル。リアル鱗でアピール。",
             "size": "35",
             "url": "https://www.daiwa.com/jp/product/loy8l5t",
             "variants": [
@@ -143,6 +143,165 @@
                     "image": "static/img/uploads/md35s_lb_light_blue_hadaka.jpeg",
                     "jan": "4550133398452",
                     "owned": true
+                }
+            ]
+        },
+        {
+            "id": "md33s_mirror",
+            "manufacturer": "ダイワ",
+            "productName": "ミッドスッテ33S ミラー/帽",
+            "description": "ミラー形状で33mm、ステン針0.5mm6本立てでお求めやすい価格で登場。多面体で複雑なキラメキを発するミラーボディー、ケイムラ入りで効果大。",
+            "size": "33",
+            "url": "https://www.daiwa.com/jp/product/n0wmy4x",
+            "variants": [
+                {
+                    "color": "ＫＭケイムラハダカ",
+                    "jan": "4550133160356",
+                    "image": "static/img/uploads/md33s_mirror_km_keimura_hadaka.jpeg",
+                    "owned": false
+                },
+                {
+                    "color": "ＰＫピンクハダカ",
+                    "jan": "4550133160363",
+                    "image": "static/img/uploads/md33s_mirror_pk_pink_hadaka.jpeg",
+                    "owned": true
+                },
+                {
+                    "color": "Ｇグリーンハダカ",
+                    "jan": "4550133160370",
+                    "image": "static/img/uploads/md33s_mirror_g_green_hadaka.jpeg",
+                    "owned": false
+                },
+                {
+                    "color": "ＧＫギョクロハダカ",
+                    "jan": "4550133160387",
+                    "image": "static/img/uploads/md33s_mirror_gk_gyokuro_hadaka.jpeg",
+                    "owned": false
+                },
+                {
+                    "color": "ＬＢライトＢハダカ",
+                    "jan": "4550133160394",
+                    "image": "static/img/uploads/md33s_mirror_lb_lightb_hadaka.jpeg",
+                    "owned": false
+                },
+                {
+                    "color": "ＫＭアオボウ／ケイムラＨ",
+                    "jan": "4550133165832",
+                    "image": "static/img/uploads/md33s_mirror_km_aobou_keimurah.jpeg",
+                    "owned": false
+                },
+                {
+                    "color": "ＰＫピンクボウ／ピンクＨ",
+                    "jan": "4550133165849",
+                    "image": "static/img/uploads/md33s_mirror_pk_pinkbou_pinkh.jpeg",
+                    "owned": true
+                },
+                {
+                    "color": "Ｇグリーンボウ／グリーンＨ",
+                    "jan": "4550133165856",
+                    "image": "static/img/uploads/md33s_mirror_g_greenbou_greenh.jpeg",
+                    "owned": true
+                },
+                {
+                    "color": "ＧＫアカボウ／ギョクロＨ",
+                    "jan": "4550133165863",
+                    "image": "static/img/uploads/md33s_mirror_gk_akabou_gyokuroh.jpeg",
+                    "owned": true
+                },
+                {
+                    "color": "ＬＢアカボウ／ライトＢＨ",
+                    "jan": "4550133165870",
+                    "image": "static/img/uploads/md33s_mirror_lb_akabou_lightbh.jpeg",
+                    "owned": true
+                }
+            ]
+
+        },
+        {
+            "id": "md50s-typef",
+            "manufacturer": "ダイワ",
+            "productName": "ミッドスッテ50S タイプF",
+            "description": "中空構造のマルイカスッテ登場、ブランコ釣りで特に効果を発揮するイカ角。",
+            "size": "50",
+            "url": "https://www.daiwa.com/jp/product/7egunv1",
+            "variants": [
+                {
+                    "color": "ＫＭケイムラ",
+                    "image": "static/img/uploads/md50s_typef_km_keimura.jpeg",
+                    "jan": "4550133032950",
+                    "owned": false
+                },
+                {
+                    "color": "ＰＫピンク",
+                    "image": "static/img/uploads/md50s_typef_pk_pink.jpeg",
+                    "jan": "4550133032967",
+                    "owned": false
+                },
+                {
+                    "color": "Ｇグリーン",
+                    "image": "static/img/uploads/md50s_typef_g_green.jpeg",
+                    "jan": "4550133032974",
+                    "owned": false
+                },
+                {
+                    "color": "ＧＫギョクロ",
+                    "image": "static/img/uploads/md50s_typef_gk_gyokuro.jpeg",
+                    "jan": "4550133032981",
+                    "owned": true
+                },
+                {
+                    "color": "ＬＢライトＢ",
+                    "image": "static/img/uploads/md50s_typef_lb_light_b.jpeg",
+                    "jan": "4550133032998",
+                    "owned": true
+                },
+                {
+                    "color": "ケイムラ青帽",
+                    "image": "static/img/uploads/md50s_typef_km_aobou.jpeg",
+                    "jan": "4550133033001",
+                    "owned": false
+                },
+                {
+                    "color": "ピンク／ピンク帽",
+                    "image": "static/img/uploads/md50s_typef_pk_pinkbou.jpeg",
+                    "jan": "4550133033018",
+                    "owned": false
+                },
+                {
+                    "color": "グリーン／グリーン帽",
+                    "image": "static/img/uploads/md50s_typef_g_greenbou.jpeg",
+                    "jan": "4550133033025",
+                    "owned": true
+                },
+                {
+                    "color": "ギョクロ／赤帽",
+                    "image": "static/img/uploads/md50s_typef_gk_akabou.jpeg",
+                    "jan": "4550133033032",
+                    "owned": false
+                },
+                {
+                    "color": "ライトブルー／赤帽",
+                    "image": "static/img/uploads/md50s_typef_lb_akabou.jpeg",
+                    "jan": "4550133033049",
+                    "owned": false
+                },
+                {
+                    "color": "ケイムラ／赤帽／白ＧＡＳ",
+                    "image": "static/img/uploads/md50s_typef_km_akabou_shiro_gas.jpeg",
+                    "jan": "4550133033056",
+                    "owned": false
+                },
+                {
+                    "color": "ピンク／赤帽／白ＧＡＳ",
+                    "image": "static/img/uploads/md50s_typef_pk_pinkbou_shiro_gas.jpeg",
+                    "jan": "4550133033063",
+                    "owned": false
+                },
+                {
+                    "color": "グリーン／赤帽／白ＧＡＳ",
+                    "image": "static/img/uploads/md50s_typef_g_macha_gas.jpeg",
+                    "jan": "4550133033070",
+                    "owned": false
                 }
             ]
         }

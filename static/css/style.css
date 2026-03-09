@@ -122,11 +122,20 @@ a {
 
 .groups {
   display: grid;
-  gap: 28px;
+  gap: 36px;
 }
 
 .groups > .group + .group {
-  padding-top: 18px;
+  position: relative;
+  padding-top: 44px;
+}
+
+.groups > .group + .group::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 22px;
   border-top: 1px solid var(--border);
 }
 

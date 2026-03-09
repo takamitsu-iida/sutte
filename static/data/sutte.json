@@ -215,7 +215,34 @@
                     "owned": true
                 }
             ]
-
+        },
+        {
+            "id": "md33s_mirror_konshoku",
+            "manufacturer": "ダイワ",
+            "productName": "ミッドスッテ33Sミラー 混色",
+            "description": "マルイカ角の定番ミッドスッテ33Sミラーに混色タイプ登場。水中でキラメキ効果が強く出るミラーにさらにアピール力を強めた2色成形タイプが登場。スレたマルイカに効果を発揮。",
+            "size": "33",
+            "url": "https://www.daiwa.com/jp/product/go6l74c",
+            "variants": [
+                {
+                    "color": "ＫＭケイムラ／ギョクロ",
+                    "jan": "4550133219979",
+                    "image": "static/img/uploads/md33s_mirror_konshoku_km_keimura_gyokuro.jpeg",
+                    "owned": true
+                },
+                {
+                    "color": "ＰＫピンク／グリーン",
+                    "jan": "4550133219986",
+                    "image": "static/img/uploads/md33s_mirror_konshoku_pk_pink_green.jpeg",
+                    "owned": true
+                },
+                {
+                    "color": "ＫＭケイムラ／ピンク",
+                    "jan": "4550133219993",
+                    "image": "static/img/uploads/md33s_mirror_konshoku_km_keimura_pink.jpeg",
+                    "owned": true
+                }
+            ]
         },
         {
             "id": "md50s-typef",

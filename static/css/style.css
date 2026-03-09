@@ -182,6 +182,14 @@ a {
   grid-template-rows: 140px 1fr;
 }
 
+.card[data-owned="true"] {
+  border-color: var(--text);
+}
+
+.card[data-owned="true"] .name {
+  font-weight: 700;
+}
+
 .thumb-button {
   display: block;
   padding: 0;
@@ -264,6 +272,12 @@ a {
   padding: 2px 8px;
   border-radius: 999px;
   font-size: 1.2rem;
+}
+
+.tag-owned {
+  border-color: var(--text);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .note {

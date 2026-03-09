@@ -17,7 +17,7 @@ https://takamitsu-iida.github.io/sutte/
 `static/data/sutte.json` は以下の形です。
 
 - `products[]`: 商品（メーカー/商品名/説明など）
-- `products[].variants[]`: 色違い（カラー/画像/メモ）
+- `products[].variants[]`: 色違い（カラー/画像/メモ/所持フラグなど）
 
 例（概略）:
 
@@ -29,12 +29,19 @@ https://takamitsu-iida.github.io/sutte/
 			"productName": "...",
 			"description": "...",
 			"variants": [
-				{ "color": "...", "image": "static/img/uploads/...jpg" }
+					{ "color": "...", "image": "static/img/uploads/...jpg", "owned": false }
 			]
 		}
 	]
 }
 ```
+
+	#### 所持フラグ（`owned`）
+
+	`products[].variants[].owned` に boolean を入れると、その色を「所持しているか」を表せます。
+
+	- `true`: 所持
+	- `false` または未指定: 未所持（デフォルト）
 
 GitHub Pagesは静的ホスティングのため、ページ上から直接GitHubへ保存はできません（認証・API連携が必要です）。
 編集はGitHub上で `static/data/sutte.json` を更新してコミット（またはPR）してください。

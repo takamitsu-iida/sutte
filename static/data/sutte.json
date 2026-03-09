@@ -10,73 +10,87 @@
             "variants": [
                 {
                     "color": "青帽　グリーン／クリアー",
-                    "image": "static/img/uploads/aobou_green_clear.jpeg",
-                    "jan": "4550133165917"
+                    "image": "static/img/uploads/md35s_reflect_aobou_green_clear.jpeg",
+                    "jan": "4550133165917",
+                    "owned": true
                 },
                 {
                     "color": "グリーン帽　ライトブルー／クリアー",
-                    "image": "static/img/uploads/greenbou_light_blue_clear.jpeg",
-                    "jan": "4550133165924"
+                    "image": "static/img/uploads/md35s_reflect_greenbou_light_blue_clear.jpeg",
+                    "jan": "4550133165924",
+                    "owned": true
                 },
                 {
                     "color": "マッチャ帽　ギョクロ／ピンククリアー",
-                    "image": "static/img/uploads/machabou_gyokuro_pink_clear.jpeg",
-                    "jan": "4550133165931"
+                    "image": "static/img/uploads/md35s_reflect_machabou_gyokuro_pink_clear.jpeg",
+                    "jan": "4550133165931",
+                    "owned": true
                 },
                 {
                     "color": "ピンク帽　ブルー／ピンククリアー",
-                    "image": "static/img/uploads/pinkbou_blue_pink_clear.jpeg",
-                    "jan": "4550133165948"
+                    "image": "static/img/uploads/md35s_reflect_pinkbou_blue_pink_clear.jpeg",
+                    "jan": "4550133165948",
+                    "owned": true
                 },
                 {
                     "color": "ケイムラ／クリアー",
-                    "image": "static/img/uploads/keimura_clear.jpeg",
-                    "jan": "4550133166044"
+                    "image": "static/img/uploads/md35s_reflect_keimura_clear.jpeg",
+                    "jan": "4550133166044",
+                    "owned": false
                 },
                 {
                     "color": "ピンク／クリアー",
-                    "image": "static/img/uploads/pink_clear.jpeg",
-                    "jan": "4550133166051"
+                    "image": "static/img/uploads/md35s_reflect_pink_clear.jpeg",
+                    "jan": "4550133166051",
+                    "owned": true
                 },
                 {
                     "color": "オレンジ／クリアー",
-                    "image": "static/img/uploads/orange_clear.jpeg",
-                    "jan": "4550133398353"
+                    "image": "static/img/uploads/md35s_reflect_orange_clear.jpeg",
+                    "jan": "4550133398353",
+                    "owned": false
                 },
                 {
                     "color": "ギョクロ／クリアー",
-                    "image": "static/img/uploads/gyokuro_clear.jpeg",
-                    "jan": "4550133166068"
+                    "image": "static/img/uploads/md35s_reflect_gyokuro_clear.jpeg",
+                    "jan": "4550133166068",
+                    "owned": false
                 },
                 {
                     "color": "グリーン／クリアー",
-                    "image": "static/img/uploads/green_clear.jpeg",
-                    "jan": "4550133220357"
+                    "image": "static/img/uploads/md35s_reflect_green_clear.jpeg",
+                    "jan": "4550133220357",
+                    "owned": false
                 },
                 {
                     "color": "ブルー／クリアー",
-                    "image": "static/img/uploads/blue_clear.jpeg",
-                    "jan": "4550133220364"
+                    "image": "static/img/uploads/md35s_reflect_blue_clear.jpeg",
+                    "jan": "4550133220364",
+                    "owned": false
                 },
                 {
                     "color": "ライトブルー／クリアー",
-                    "image": "static/img/uploads/light_blue_clear.jpeg",
-                    "jan": "4550133220371"
+                    "image": "static/img/uploads/md35s_reflect_light_blue_clear.jpeg",
+                    "jan": "4550133220371",
+                    "owned": true
                 },
                 {
                     "color": "ゴールド／クリアー",
-                    "image": "static/img/uploads/gold_clear.jpeg",
-                    "jan": "4550133398360"
+                    "image": "static/img/uploads/md35s_reflect_gold_clear.jpeg",
+                    "jan": "4550133398360",
+                    "owned": true
                 },
                 {
                     "color": "ギョクロ／ピンククリアー",
-                    "image": "static/img/uploads/gyokuro_pink_clear.jpeg",
-                    "jan": "4550133398377"
+                    "image": "static/img/uploads/md35s_reflect_gyokuro_pink_clear.jpeg",
+                    "jan": "4550133398377",
+                    "owned": true
                 },
                 {
                     "color": "ブルー／ピンククリアー",
-                    "image": "static/img/uploads/blue_pink_clear.jpeg",
-                    "jan": "4550133398384"
+                    "image": "static/img/uploads/md35s_reflect_blue_pink_clear.jpeg",
+                    "jan": "4550133398384",
+                    "owned": false
                 }
             ]
         },
@@ -90,40 +104,49 @@
             "variants": [
                 {
                     "color": "ＫＭケイムラハダカ",
-                    "image": "static/img/uploads/km_keimura_hadaka.jpeg",
-                    "jan": "4550133398391"
+                    "image": "static/img/uploads/md35s_km_keimura_hadaka.jpeg",
+                    "jan": "4550133398391",
+                    "owned": false
                 },
                 {
                     "color": "ＰＫピンクハダカ",
-                    "image": "static/img/uploads/pk_pink_hadaka.jpeg",
-                    "jan": "4550133398407"
+                    "image": "static/img/uploads/md35s_pk_pink_hadaka.jpeg",
+                    "jan": "4550133398407",
+                    "owned": true
                 },
                 {
                     "color": "Ｇグリーンハダカ",
-                    "image": "static/img/uploads/g_green_hadaka.jpeg",
-                    "jan": "4550133398414"
+                    "image": "static/img/uploads/md35s_g_green_hadaka.jpeg",
+                    "jan": "4550133398414",
+                    "owned": false
                 },
                 {
                     "color": "ＰＰパープルハダカ",
-                    "image": "static/img/uploads/pp_purple_hadaka.jpeg",
-                    "jan": "4550133398421"
+                    "image": "static/img/uploads/md35s_pp_purple_hadaka.jpeg",
+                    "jan": "4550133398421",
+                    "owned": true
                 },
                 {
                     "color": "ＧＤゴールドハダカ",
-                    "image": "static/img/uploads/gd_gold_hadaka.jpeg",
-                    "jan": "4550133398438"
+                    "image": "static/img/uploads/md35s_gd_gold_hadaka.jpeg",
+                    "jan": "4550133398438",
+                    "owned": true
                 },
                 {
                     "color": "ＧＫギョクロハダカ",
-                    "image": "static/img/uploads/gk_gyokuro_hadaka.jpeg",
-                    "jan": "4550133398445"
+                    "image": "static/img/uploads/md35s_gk_gyokuro_hadaka.jpeg",
+                    "jan": "4550133398445",
+                    "owned": false
                 },
                 {
                     "color": "ＬＢライトＢハダカ",
-                    "image": "static/img/uploads/lb_light_blue_hadaka.jpeg",
-                    "jan": "4550133398452"
+                    "image": "static/img/uploads/md35s_lb_light_blue_hadaka.jpeg",
+                    "jan": "4550133398452",
+                    "owned": true
                 }
             ]
         }
+
+
     ]
 }

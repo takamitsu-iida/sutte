@@ -47,6 +47,7 @@ collections:
                 summary: "{{fields.color}}"
                 fields:
                   - { label: "カラー", name: "color", widget: "string", required: false }
+                  - { label: "所持", name: "owned", widget: "boolean", required: false, default: false, hint: "手元にある場合はON" }
                   - label: "画像"
                     name: "image"
                     widget: "image"

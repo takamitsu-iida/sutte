@@ -106,6 +106,8 @@ function renderVariantCard(variant, groupLabel, product = null) {
   const title = color || '（カラー未設定）';
   const alt = [groupLabel, title].filter(Boolean).join(' / ');
 
+  const owned = Boolean(variant?.owned ?? product?.owned ?? false);
+
   const image = normalizeImagePath(variant?.image);
   const thumbHtml = image
     ? `<button class="thumb-button" type="button" data-image="${escapeHtml(image)}" data-alt="${escapeHtml(alt)}">
@@ -118,6 +120,7 @@ function renderVariantCard(variant, groupLabel, product = null) {
   const weight = variant?.weight ?? product?.weight;
 
   const tags = [
+    owned ? '<span class="tag tag-owned">所持</span>' : '',
     formatTag('号', go),
     formatTag('重さ', weight),
   ].filter(Boolean);
@@ -129,7 +132,7 @@ function renderVariantCard(variant, groupLabel, product = null) {
   const note = variant?.note ?? '';
 
   return `
-    <article class="card">
+    <article class="card" data-owned="${owned ? 'true' : 'false'}">
       ${thumbHtml}
       <div class="card-body">
         <h4 class="name">${escapeHtml(title)}</h4>

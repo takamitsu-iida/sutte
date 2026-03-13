@@ -65,6 +65,24 @@ a {
   gap: 12px;
 }
 
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  user-select: none;
+}
+
+.filter-toggle input {
+  accent-color: var(--text);
+}
+
 .panel-title {
   font-size: 1.6rem;
   margin: 0 0 12px;

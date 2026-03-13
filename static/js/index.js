@@ -207,6 +207,37 @@ function renderProductList(products) {
   return sections.join('');
 }
 
+function isOwnedVariant(variant, product = null) {
+  return Boolean(variant?.owned ?? product?.owned ?? false);
+}
+
+function applyOwnedFilter(normalized, ownedOnly) {
+  if (!ownedOnly) return normalized;
+
+  if (normalized.kind === 'products') {
+    const filteredProducts = normalized.products
+      .map((product) => {
+        const variants = Array.isArray(product?.variants) ? product.variants : [];
+        const ownedVariants = variants.filter((v) => isOwnedVariant(v, product));
+        return { ...product, variants: ownedVariants };
+      })
+      .filter((product) => Array.isArray(product?.variants) && product.variants.length > 0);
+
+    return { kind: 'products', products: filteredProducts };
+  }
+
+  const filteredVariants = (normalized.variants ?? []).filter((v) => Boolean(v?.owned ?? false));
+  return { kind: 'variants', variants: filteredVariants };
+}
+
+function countVariants(normalized) {
+  if (!normalized) return 0;
+  if (normalized.kind === 'products') {
+    return normalized.products.reduce((sum, p) => sum + (Array.isArray(p?.variants) ? p.variants.length : 0), 0);
+  }
+  return (normalized.variants ?? []).length;
+}
+
 function ensureImageDialog() {
   let dialog = document.getElementById('image-dialog');
   if (dialog) return dialog;
@@ -269,30 +300,10 @@ async function main() {
     const payload = await loadData();
     const normalized = normalizeSutteList(payload);
 
-    const variantsCount =
-      normalized.kind === 'products'
-        ? normalized.products.reduce((sum, p) => sum + (Array.isArray(p?.variants) ? p.variants.length : 0), 0)
-        : normalized.variants.length;
-
-    const countEl = el('sutte-count');
-    if (countEl) countEl.textContent = String(variantsCount);
-
     const container = el('sutte-list');
     if (!container) return;
 
-    const isEmpty =
-      normalized.kind === 'products'
-        ? normalized.products.length === 0
-        : normalized.variants.length === 0;
-
-    if (isEmpty) {
-      container.innerHTML = '';
-      setStatus('データが空です。static/data/sutte.json を編集してください。');
-      return;
-    }
-
-    container.innerHTML =
-      normalized.kind === 'products' ? renderProductList(normalized.products) : renderGroupedList(normalized.variants);
+    // 画像拡大はイベント委譲で一度だけ設定
     container.addEventListener('click', (e) => {
       const button = e.target && e.target.closest ? e.target.closest('.thumb-button') : null;
       if (!button) return;
@@ -301,7 +312,37 @@ async function main() {
       if (!src) return;
       openImageInDialog(src, alt);
     });
-    setStatus('');
+
+    const filterOwnedEl = el('filter-owned');
+    let ownedOnly = Boolean(filterOwnedEl?.checked ?? false);
+
+    const render = () => {
+      const filtered = applyOwnedFilter(normalized, ownedOnly);
+      const variantsCount = countVariants(filtered);
+
+      const countEl = el('sutte-count');
+      if (countEl) countEl.textContent = String(variantsCount);
+
+      const isEmpty = variantsCount === 0;
+      if (isEmpty) {
+        container.innerHTML = '';
+        setStatus(ownedOnly ? '所持しているスッテがありません。' : 'データが空です。static/data/sutte.json を編集してください。');
+        return;
+      }
+
+      container.innerHTML =
+        filtered.kind === 'products' ? renderProductList(filtered.products) : renderGroupedList(filtered.variants);
+      setStatus(ownedOnly ? '所持のみ表示中' : '');
+    };
+
+    if (filterOwnedEl) {
+      filterOwnedEl.addEventListener('change', () => {
+        ownedOnly = Boolean(filterOwnedEl.checked);
+        render();
+      });
+    }
+
+    render();
   } catch (e) {
     console.error(e);
     setStatus('読み込みに失敗しました。ブラウザのコンソールも確認してください。');

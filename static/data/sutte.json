@@ -9,92 +9,92 @@
             "url": "http://www.amanotsurigu.com/maruikaneon1.html",
             "variants": [
                 {
-                    "color": "ブルー/ブルー/蛍光紫 (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_40_s01.jpeg",
+                    "color": "S-01 ブルー/ブルー/蛍光紫",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s01.jpg",
                     "jan": "4518520500017",
                     "owned": false
                 },
                 {
-                    "color": "ブルー/イエロー/蛍光ムラサキ (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_40_s02.jpeg",
+                    "color": "S-02 ブルー/イエロー/蛍光ムラサキ",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s02.jpg",
                     "jan": "4518520500024",
                     "owned": false
                 },
                 {
-                    "color": "レッド/ピンク/蛍光ムラサキ (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_40_s03.jpeg",
+                    "color": "S-03 レッド/ピンク/蛍光ムラサキ",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s03.jpg",
                     "jan": "4518520500031",
                     "owned": false
                 },
                 {
-                    "color": "ピンク/ピンク/蛍光ブルー (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_40_s04.jpeg",
+                    "color": "S-04 ピンク/ピンク/蛍光ブルー",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s04.jpg",
                     "jan": "4518520500048",
                     "owned": true
                 },
                 {
-                    "color": "ディープピンク/レッド/蛍光ピンク (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_40_s05.jpeg",
+                    "color": "S-05 ディープピンク/レッド/蛍光ピンク",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s05.jpg",
                     "jan": "4518520500055",
                     "owned": true
                 },
                 {
-                    "color": "オリーブ/グリーン/蛍光ピンク (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_40_s06.jpeg",
+                    "color": "S-06 オリーブ/グリーン/蛍光ピンク",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s06.jpg",
                     "jan": "4518520500062",
                     "owned": true
                 },
                 {
-                    "color": "オレンジ/オレンジ/蛍光イエロー (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_40_s07.jpeg",
+                    "color": "S-07 オレンジ/オレンジ/蛍光イエロー",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s07.jpg",
                     "jan": "4518520500079",
                     "owned": false
                 },
                 {
-                    "color": "ピンク/グリーン＆ブルー/蛍光ムラサキ (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_40_s08.jpeg",
+                    "color": "S-08 ピンク/グリーン＆ブルー/蛍光ムラサキ",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s08.jpg",
                     "jan": "4518520500086",
                     "owned": false
                 },
                 {
-                    "color": "イエロー/レッド＆ブルー/蛍光ムラサキ (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_40_s09.jpeg",
+                    "color": "S-09 イエロー/レッド＆ブルー/蛍光ムラサキ",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s09.jpg",
                     "jan": "4518520500093",
                     "owned": true
                 },
                 {
-                    "color": "ブルー/ピンク＆ブルー/蛍光ブルー (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_40_s10.jpeg",
+                    "color": "S-10 ブルー/ピンク＆ブルー/蛍光ブルー",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s10.jpg",
                     "jan": "4518520500109",
                     "owned": true
                 },
                 {
-                    "color": "イエロー/ブルー＆ディープブルー/蛍光ブルー (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_40_s11.jpeg",
+                    "color": "S-11 イエロー/ブルー＆ディープブルー/蛍光ブルー",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s11.jpg",
                     "jan": "4518520500116",
                     "owned": false
                 },
                 {
-                    "color": "ブルー/グリーン＆ピンク/蛍光ピンク (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_40_s12.jpeg",
+                    "color": "S-12 ブルー/グリーン＆ピンク/蛍光ピンク",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s12.jpg",
                     "jan": "4518520500123",
                     "owned": false
                 },
                 {
-                    "color": "オレンジ/イエロー＆ブルー/蛍光ピンク (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_40_s13.jpeg",
+                    "color": "S-13 オレンジ/イエロー＆ブルー/蛍光ピンク",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s13.jpg",
                     "jan": "4518520500130",
                     "owned": false
                 },
                 {
-                    "color": "ブルー/オレンジ＆グリーン/蛍光イエロー (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_40_s14.jpeg",
+                    "color": "S-14 ブルー/オレンジ＆グリーン/蛍光イエロー",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s14.jpg",
                     "jan": "4518520500147",
                     "owned": true
                 },
                 {
-                    "color": "オリーブ/レッド＆イエロー/蛍光イエロー (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_40_s15.jpeg",
+                    "color": "S-15 オリーブ/レッド＆イエロー/蛍光イエロー",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s15.jpg",
                     "jan": "4518520500154",
                     "owned": true
                 }
@@ -105,43 +105,43 @@
             "id": "アマノ釣具　マルイカネオン　アピール48",
             "manufacturer": "JOKER X アマノ釣具コラボ",
             "productName": "マルイカネオン　アピール48",
-            "description": "JOKER×アマノ釣具コラボ、マルイカスッテが新発売！今回のコラボ・マルイカネオンはウイリーヘッド仕様でJOKERにはない、アマノ釣具オリジナルカラーのラインナップです。浅場から深場まで、さらには夜釣りにも対応のオールマイティーで使えるカラーとなっております。数量限定商品。2025年〜2026年発売。",
+            "description": "JOKER×アマノ釣具コラボ、マルイカスッテが新発売！今回のコラボ・マルイカネオンはウイリーヘッド仕様でJOKERにはない、アマノ釣具オリジナルカラーのラインナップです。浅場から深場まで、さらには夜釣りにも対応のオールマイティーで使えるカラーとなっております。数量限定商品。2025年〜2026年発売。色は(ウイリー/内部/ボディ)の順。",
             "size": "48",
             "url": "http://www.amanotsurigu.com/maruikaneon1.html",
             "variants": [
                 {
-                    "color": "ピンク/グリーン＆ブルー/蛍光ムラサキ (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_48_ap01.jpeg",
+                    "color": "AP-01 ピンク/グリーン＆ブルー/蛍光ムラサキ",
+                    "image": "static/img/uploads/amano_maruika_neon_48_ap01.jpg",
                     "jan": "4518520500161",
                     "owned": true
                 },
                 {
-                    "color": "イエロー/レッド＆ブルー/蛍光ムラサキ (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_48_ap02.jpeg",
+                    "color": "AP-02 イエロー/レッド＆ブルー/蛍光ムラサキ",
+                    "image": "static/img/uploads/amano_maruika_neon_48_ap02.jpg",
                     "jan": "4518520500178",
                     "owned": true
                 },
                 {
-                    "color": "ブルー/ピンク＆ブルー/蛍光ブルー (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_48_ap03.jpeg",
+                    "color": "AP-03 ブルー/ピンク＆ブルー/蛍光ブルー",
+                    "image": "static/img/uploads/amano_maruika_neon_48_ap03.jpg",
                     "jan": "4518520500185",
                     "owned": false
                 },
                 {
-                    "color": "ブルー/グリーン＆ピンク/蛍光ピンク (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_48_ap04.jpeg",
+                    "color": "AP-04 ブルー/グリーン＆ピンク/蛍光ピンク",
+                    "image": "static/img/uploads/amano_maruika_neon_48_ap04.jpg",
                     "jan": "4518520500192",
                     "owned": true
                 },
                 {
-                    "color": "オレンジ/イエロー＆ブルー/蛍光ピンク (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_48_ap05.jpeg",
+                    "color": "AP-05 オレンジ/イエロー＆ブルー/蛍光ピンク",
+                    "image": "static/img/uploads/amano_maruika_neon_48_ap05.jpg",
                     "jan": "4518520500208",
                     "owned": true
                 },
                 {
-                    "color": "オリーブ/レッド＆イエロー/蛍光イエロー (ウイリー/内部/ボディ)",
-                    "image": "static/img/uploads/amano_maruika_neon_48_ap06.jpeg",
+                    "color": "AP-06 オリーブ/レッド＆イエロー/蛍光イエロー",
+                    "image": "static/img/uploads/amano_maruika_neon_48_ap06.jpg",
                     "jan": "4518520500215",
                     "owned": true
                 }

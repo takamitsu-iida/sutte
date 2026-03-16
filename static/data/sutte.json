@@ -1,6 +1,154 @@
 {
     "products": [
         {
+            "id": "アマノ釣具　マルイカネオン　スリム40",
+            "manufacturer": "JOKER X アマノ釣具コラボ",
+            "productName": "マルイカネオン　スリム40",
+            "description": "JOKER×アマノ釣具コラボ、マルイカスッテが新発売！今回のコラボ・マルイカネオンはウイリーヘッド仕様でJOKERにはない、アマノ釣具オリジナルカラーのラインナップです。浅場から深場まで、さらには夜釣りにも対応のオールマイティーで使えるカラーとなっております。数量限定商品。2025年〜2026年発売。",
+            "size": "40",
+            "url": "http://www.amanotsurigu.com/maruikaneon1.html",
+            "variants": [
+                {
+                    "color": "ブルー/ブルー/蛍光紫 (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s01.jpeg",
+                    "jan": "4518520500017",
+                    "owned": false
+                },
+                {
+                    "color": "ブルー/イエロー/蛍光ムラサキ (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s02.jpeg",
+                    "jan": "4518520500024",
+                    "owned": false
+                },
+                {
+                    "color": "レッド/ピンク/蛍光ムラサキ (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s03.jpeg",
+                    "jan": "4518520500031",
+                    "owned": false
+                },
+                {
+                    "color": "ピンク/ピンク/蛍光ブルー (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s04.jpeg",
+                    "jan": "4518520500048",
+                    "owned": true
+                },
+                {
+                    "color": "ディープピンク/レッド/蛍光ピンク (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s05.jpeg",
+                    "jan": "4518520500055",
+                    "owned": true
+                },
+                {
+                    "color": "オリーブ/グリーン/蛍光ピンク (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s06.jpeg",
+                    "jan": "4518520500062",
+                    "owned": true
+                },
+                {
+                    "color": "オレンジ/オレンジ/蛍光イエロー (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s07.jpeg",
+                    "jan": "4518520500079",
+                    "owned": false
+                },
+                {
+                    "color": "ピンク/グリーン＆ブルー/蛍光ムラサキ (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s08.jpeg",
+                    "jan": "4518520500086",
+                    "owned": false
+                },
+                {
+                    "color": "イエロー/レッド＆ブルー/蛍光ムラサキ (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s09.jpeg",
+                    "jan": "4518520500093",
+                    "owned": true
+                },
+                {
+                    "color": "ブルー/ピンク＆ブルー/蛍光ブルー (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s10.jpeg",
+                    "jan": "4518520500109",
+                    "owned": true
+                },
+                {
+                    "color": "イエロー/ブルー＆ディープブルー/蛍光ブルー (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s11.jpeg",
+                    "jan": "4518520500116",
+                    "owned": false
+                },
+                {
+                    "color": "ブルー/グリーン＆ピンク/蛍光ピンク (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s12.jpeg",
+                    "jan": "4518520500123",
+                    "owned": false
+                },
+                {
+                    "color": "オレンジ/イエロー＆ブルー/蛍光ピンク (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s13.jpeg",
+                    "jan": "4518520500130",
+                    "owned": false
+                },
+                {
+                    "color": "ブルー/オレンジ＆グリーン/蛍光イエロー (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s14.jpeg",
+                    "jan": "4518520500147",
+                    "owned": true
+                },
+                {
+                    "color": "オリーブ/レッド＆イエロー/蛍光イエロー (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_40_s15.jpeg",
+                    "jan": "4518520500154",
+                    "owned": true
+                }
+            ]
+        },
+
+        {
+            "id": "アマノ釣具　マルイカネオン　アピール48",
+            "manufacturer": "JOKER X アマノ釣具コラボ",
+            "productName": "マルイカネオン　アピール48",
+            "description": "JOKER×アマノ釣具コラボ、マルイカスッテが新発売！今回のコラボ・マルイカネオンはウイリーヘッド仕様でJOKERにはない、アマノ釣具オリジナルカラーのラインナップです。浅場から深場まで、さらには夜釣りにも対応のオールマイティーで使えるカラーとなっております。数量限定商品。2025年〜2026年発売。",
+            "size": "48",
+            "url": "http://www.amanotsurigu.com/maruikaneon1.html",
+            "variants": [
+                {
+                    "color": "ピンク/グリーン＆ブルー/蛍光ムラサキ (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_48_ap01.jpeg",
+                    "jan": "4518520500161",
+                    "owned": true
+                },
+                {
+                    "color": "イエロー/レッド＆ブルー/蛍光ムラサキ (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_48_ap02.jpeg",
+                    "jan": "4518520500178",
+                    "owned": true
+                },
+                {
+                    "color": "ブルー/ピンク＆ブルー/蛍光ブルー (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_48_ap03.jpeg",
+                    "jan": "4518520500185",
+                    "owned": false
+                },
+                {
+                    "color": "ブルー/グリーン＆ピンク/蛍光ピンク (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_48_ap04.jpeg",
+                    "jan": "4518520500192",
+                    "owned": true
+                },
+                {
+                    "color": "オレンジ/イエロー＆ブルー/蛍光ピンク (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_48_ap05.jpeg",
+                    "jan": "4518520500208",
+                    "owned": true
+                },
+                {
+                    "color": "オリーブ/レッド＆イエロー/蛍光イエロー (ウイリー/内部/ボディ)",
+                    "image": "static/img/uploads/amano_maruika_neon_48_ap06.jpeg",
+                    "jan": "4518520500215",
+                    "owned": true
+                }
+            ]
+        },
+
+        {
             "id": "md35s-reflect",
             "manufacturer": "ダイワ",
             "productName": "ミッドスッテ35S リフレクト／帽",

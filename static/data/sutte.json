@@ -48,13 +48,13 @@
                     "color": "S-07 オレンジ/オレンジ/蛍光イエロー",
                     "image": "static/img/uploads/amano_maruika_neon_40_s07.jpg",
                     "jan": "4518520500079",
-                    "owned": false
+                    "owned": true
                 },
                 {
                     "color": "S-08 ピンク/グリーン＆ブルー/蛍光ムラサキ",
                     "image": "static/img/uploads/amano_maruika_neon_40_s08.jpg",
                     "jan": "4518520500086",
-                    "owned": false
+                    "owned": true
                 },
                 {
                     "color": "S-09 イエロー/レッド＆ブルー/蛍光ムラサキ",

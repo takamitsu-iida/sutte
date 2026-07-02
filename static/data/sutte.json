@@ -72,19 +72,19 @@
                     "color": "S-11 イエロー/ブルー＆ディープブルー/蛍光ブルー",
                     "image": "static/img/uploads/amano_maruika_neon_40_s11.jpg",
                     "jan": "4518520500116",
-                    "owned": false
+                    "owned": true
                 },
                 {
                     "color": "S-12 ブルー/グリーン＆ピンク/蛍光ピンク",
                     "image": "static/img/uploads/amano_maruika_neon_40_s12.jpg",
                     "jan": "4518520500123",
-                    "owned": false
+                    "owned": true
                 },
                 {
                     "color": "S-13 オレンジ/イエロー＆ブルー/蛍光ピンク",
                     "image": "static/img/uploads/amano_maruika_neon_40_s13.jpg",
                     "jan": "4518520500130",
-                    "owned": false
+                    "owned": true
                 },
                 {
                     "color": "S-14 ブルー/オレンジ＆グリーン/蛍光イエロー",
